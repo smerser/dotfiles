@@ -1,0 +1,4 @@
+%load_ext autoreload
+%load_ext disable_autoscroll
+%autoreload 2
+

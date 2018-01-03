@@ -16,11 +16,12 @@ set mouse=v
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>x :xa<CR>
-nnoremap <leader>q :bp<cr>:bd #<cr>
-nnoremap <Leader>qq :q<CR>
 nnoremap <Leader>c :Bclose<CR>
 
-nnoremap <Leader>l <C-W><C-L>
+" easily edit and source vimrc
+:nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+:nnoremap <leader>sv :source ~/.vimrc<cr>
+
 " moving around splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -43,6 +44,10 @@ set expandtab
 set backspace=indent,eol,start
 
 execute pathogen#infect()
+
+" source abbreviations
+:so ~/.vim/abbreviations.vim
+:so ~/.vim/myscripts.vim
 
 set term=xterm-256color
 set background=dark
@@ -74,7 +79,6 @@ let NERDTreeShowLineNumbers=1
 " shows line numbers for Tagbar
 let g:tagbar_show_linenumbers = 1
 
-map <leader>o :NERDTreeToggle<CR>
 map <leader>t :TagbarToggle<CR>
 map <leader>e :copen<CR>
 map <leader>ee :cc<CR>
@@ -125,12 +129,59 @@ ino <up> <Nop>
 :map <right> :bn!<CR> 
 :map <leader>c :bw!<CR>
 
+" $ and ^ are brutal stretches to type
+:nnoremap H ^
+:vnoremap H ^
+:nnoremap L $
+:vnoremap L $
+:nnoremap ^ <nop>
+:vnoremap ^ <nop>
+:nnoremap $ <nop>
+:vnoremap $ <nop>
+
+" operate between delimiters that cursor is not currently inbetween
+:onoremap in( :<c-u>normal! f(vi(<cr>
+:onoremap in[ :<c-u>normal! f[vi[<cr>
+:onoremap in< :<c-u>normal! f<vi<<cr>
+:onoremap in{ :<c-u>normal! f{vi{<cr>
+:onoremap in" :<c-u>normal! f"vi"<cr>
+:onoremap in' :<c-u>normal! f'vi'<cr>
+
+:onoremap an( :<c-u>normal! f(va(<cr>
+:onoremap an[ :<c-u>normal! f[va[<cr>
+:onoremap an< :<c-u>normal! f<va<<cr>
+:onoremap an{ :<c-u>normal! f{va{<cr>
+:onoremap an" :<c-u>normal! f"va"<cr>
+:onoremap an' :<c-u>normal! f'va'<cr>
+
+:onoremap il( :<c-u>normal! F(vi(<cr>
+:onoremap il[ :<c-u>normal! F[vi[<cr>
+:onoremap il< :<c-u>normal! F<vi<<cr>
+:onoremap il{ :<c-u>normal! F{vi{<cr>
+:onoremap il" :<c-u>normal! F"vi"<cr>
+:onoremap il' :<c-u>normal! F'vi'<cr>
+
+:onoremap al( :<c-u>normal! F(va(<cr>
+:onoremap al[ :<c-u>normal! F[va[<cr>
+:onoremap al< :<c-u>normal! F<va<<cr>
+:onoremap al{ :<c-u>normal! F{va{<cr>
+:onoremap al" :<c-u>normal! F"va"<cr>
+:onoremap al' :<c-u>normal! F'va'<cr>
+
+" quickly insert space above and below current line
+:nnoremap <C-u> :call MakeSpaceUp()<CR>
+:nnoremap <C-d> :call MakeSpaceDown()<CR>
+
+" test
+nnoremap ,a :<C-U>call Foo(v:count)<CR>
+
 :set hidden
 
+" jedi autocomplete window
 inoremap <expr> <C-j>     pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>       pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" relative numbering (:RltvNmbr[!] enables/disables) `call RltvNmbr#RltvNmbrCtrl(1)` was added to ~/.vim//plugin/RltvNmbr.vim
+" relative numbering (:RltvNmbr enables/disables) `call RltvNmbr#RltvNmbrCtrl(1)` was added to ~/.vim/plugin/RltvNmbr.vim
 hi default HL_RltvNmbr_Minus    gui=none,italic ctermfg=172   ctermbg=black guifg=yellow   guibg=black
 hi default HL_RltvNmbr_Positive gui=none,italic ctermfg=172 ctermbg=black guifg=yellow guibg=black
 

@@ -59,4 +59,5 @@ export PATH=$HOME/Users/evan/Software/DESMAN/scripts:$PATH
 # permission settings here
 mkdir -p $software/dotfiles/.ipython && cp -r ~/.ipython/* $software/dotfiles/.ipython
 mkdir -p $software/dotfiles/.vim && cp -r ~/.vim/* $software/dotfiles/.vim
+mkdir -p $software/dotfiles/.vim && cp -r ~/.jupyter/* .jupyter/
 rm -rf $software/dotfiles/.vim/bundle/*/.git/

@@ -1,4 +1,8 @@
-"test
+" this fixes insert mode arrow keys mapping to A B C D
+if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+  inoremap <silent> <C-[>OC <RIGHT>
+endif
+
 set nowrap
 set ai
 set history=750
@@ -16,14 +20,18 @@ set mouse=v
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-" disable default write and quit (for muscle memory)
+nnoremap <Leader>e :e
+" disable (for muscle memory)
 nnoremap :w<CR> <nop>
 nnoremap :q<CR> <nop>
+nnoremap :e <nop>
 nnoremap <Leader>x :xa<CR>
 
-" easily edit and source vimrc
+" easily edit and source vimrc (and bash)
 :nnoremap <leader>ev :split ~/.vimrc<cr>
+:nnoremap <leader>eb :split ~/.bash_profile<cr>
 :nnoremap <leader>sv :source ~/.vimrc<cr>
+
 
 " moving around splits
 nnoremap <C-J> <C-W><C-J>
@@ -35,11 +43,11 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap ' `
 nnoremap ` '
 
-" >> indents in command mode. >M idents to level defined by line aboveAENEA
+" >> indents in command mode. >M idents to level defined by line above
 " command not written yet
-" << back-indents in command mode <M back-idents to 0AENEA
+" << back-indents in command mode <M back-idents to 0
 nnoremap <M ^d0
-" related: some times you just want to move a line up (mnemonic: Move Up)AENEA
+" related: some times you just want to move a line up (mnemonic: Move Up)
 nnoremap MU ^d0i<bs><esc>
 
 " when exiting insert mode, the marker r is made
@@ -65,6 +73,9 @@ execute pathogen#infect()
 " source abbreviations
 :so ~/.vim/abbreviations.vim
 :so ~/.vim/myscripts.vim
+
+" This defines how fast page up and page down functionality scrolls. A reasonable default is 5000
+let g:scroll_factor = 15000
 
 set term=xterm-256color
 set background=dark
@@ -98,9 +109,6 @@ let g:tagbar_show_linenumbers = 1
 
 map <leader>t :TagbarToggle<CR>
 map <leader>o :NERDTree<CR>
-map <leader>e :copen<CR>
-map <leader>ee :cc<CR>
-map <leader>en :cnext<CR>
 map <leader>mm :set mouse=a<CR>
 map <leader>me :set mouse=v<CR>
 hi SpellBad cterm=underline 
@@ -126,30 +134,34 @@ set statusline+=%{fugitive#statusline()}
 :set textwidth=100
 :set fo-=t
 
-" navigation (CRUCIAL FOR ME!)
-no <down> ddp
-no <up> ddkP
-no <left> <Nop>
-no <right> <Nop>
+" moving the text from one line up or down
+"no <up> ddkP
+"no <down> ddp
+" making space above or below curor's line
+:nnoremap <C-u> :call ReturnToOriginalPosition("o")<CR>
+:nnoremap <C-i> :call ReturnToOriginalPosition("O")<CR>
 
-" check SmoothScroll AENEA
+" smart delete for insert mode
 
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
+" do you want arrow movement during insert mode disabled? then uncomment these
+"ino <down> <Nop>
+"ino <left> <Nop>
+"ino <right> <Nop>
+"ino <up> <Nop>
 
 " how far away from max cursor position is from window
 :set so=1
 
-" buffer stuff
-:map <left> :bp!<CR>
-:map <right> :bn!<CR> 
-:map <leader>c :bw!<CR>
+" if these are uncommented left and right switch buffer in normal mode (otherwise it's shift arrowkey)
+"no <left> <Nop>
+"no <right> <Nop>
+":map <left> :bp!<CR>
+":map <right> :bn!<CR>
+:map <s-left> :bp!<CR>
+:map <s-right> :bn!<CR>
 
-" quickly insert space above and below current line
-:nnoremap <C-u> :call ReturnToOriginalPosition("O")<CR>
-:nnoremap <C-d> :call ReturnToOriginalPosition("o")<CR>
+" close a buffer without second thought
+:map <leader>c :bw!<CR>
 
 :set hidden
 
@@ -159,7 +171,7 @@ inoremap <expr> <C-k>     pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " relative numbering (:RltvNmbr enables/disables) `call RltvNmbr#RltvNmbrCtrl(1)` was added to ~/.vim/plugin/RltvNmbr.vim
 hi default HL_RltvNmbr_Minus    gui=none,italic ctermfg=172   ctermbg=black guifg=yellow   guibg=black
-hi default HL_RltvNmbr_Positive gui=none,italic ctermfg=172 ctermbg=black guifg=yellow guibg=black
+hi default HL_RltvNmbr_Positive gui=none,italic ctermfg=172   ctermbg=black guifg=yellow guibg=black
 
 " snakemake syntax highlighting
 au BufNewFile,BufRead Snakefile set syntax=snakemake
@@ -167,60 +179,28 @@ au BufNewFile,BufRead *.smk set syntax=snakemake
 au BufNewFile,BufRead *.fasta,*.fa  setf fasta
 
 " operate inside or outside delimiters when cursor is not between
-onoremap in( :<C-U>call SmartInner(v:count, 0, "(", "i")<CR>
-onoremap in[ :<C-U>call SmartInner(v:count, 0, "[", "i")<CR>
-onoremap in< :<C-U>call SmartInner(v:count, 0, "<", "i")<CR>
-onoremap in{ :<C-U>call SmartInner(v:count, 0, "{", "i")<CR>
-onoremap in" :<C-U>call SmartInner(v:count, 0, '"', "i")<CR>
-onoremap in' :<C-U>call SmartInner(v:count, 0, "'", "i")<CR>
+let delimiterList = ['(', ')', '[', ']', '<', '>', '{', '}', '"', "'"]
+for delimiter in delimiterList
+    if delimiter == '"'
+        execute "onoremap in"  . delimiter . " :<C-U>call SmartInner(v:count, 0, '" . delimiter . "', 'i')<CR>"
+        execute "onoremap an"  . delimiter . " :<C-U>call SmartInner(v:count, 0, '" . delimiter . "', 'a')<CR>"
+        execute "onoremap il"  . delimiter . " :<C-U>call SmartInner(v:count, 1, '" . delimiter . "', 'i')<CR>"
+        execute "onoremap al"  . delimiter . " :<C-U>call SmartInner(v:count, 1, '" . delimiter . "', 'a')<CR>"
+        execute "nnoremap vin" . delimiter . " :<C-U>call SmartInner(v:count, 0, '" . delimiter . "', 'i')<CR>"
+        execute "nnoremap van" . delimiter . " :<C-U>call SmartInner(v:count, 0, '" . delimiter . "', 'a')<CR>"
+        execute "nnoremap vil" . delimiter . " :<C-U>call SmartInner(v:count, 1, '" . delimiter . "', 'i')<CR>"
+        execute "nnoremap val" . delimiter . " :<C-U>call SmartInner(v:count, 1, '" . delimiter . "', 'a')<CR>"
+    else
+        execute 'onoremap in'  . delimiter . ' :<C-U>call SmartInner(v:count, 0, "' . delimiter . '", "i")<CR>'
+        execute 'onoremap an'  . delimiter . ' :<C-U>call SmartInner(v:count, 0, "' . delimiter . '", "a")<CR>'
+        execute 'onoremap il'  . delimiter . ' :<C-U>call SmartInner(v:count, 1, "' . delimiter . '", "i")<CR>'
+        execute 'onoremap al'  . delimiter . ' :<C-U>call SmartInner(v:count, 1, "' . delimiter . '", "a")<CR>'
+        execute 'nnoremap vin' . delimiter . ' :<C-U>call SmartInner(v:count, 0, "' . delimiter . '", "i")<CR>'
+        execute 'nnoremap van' . delimiter . ' :<C-U>call SmartInner(v:count, 0, "' . delimiter . '", "a")<CR>'
+        execute 'nnoremap vil' . delimiter . ' :<C-U>call SmartInner(v:count, 1, "' . delimiter . '", "i")<CR>'
+        execute 'nnoremap val' . delimiter . ' :<C-U>call SmartInner(v:count, 1, "' . delimiter . '", "a")<CR>'
+    endif
+endfor
 
-onoremap an( :<C-U>call SmartInner(v:count, 0, "(", "a")<CR>
-onoremap an[ :<C-U>call SmartInner(v:count, 0, "[", "a")<CR>
-onoremap an< :<C-U>call SmartInner(v:count, 0, "<", "a")<CR>
-onoremap an{ :<C-U>call SmartInner(v:count, 0, "{", "a")<CR>
-onoremap an" :<C-U>call SmartInner(v:count, 0, "'", "a")<CR>
-onoremap an' :<C-U>call SmartInner(v:count, 0, '"', "a")<CR>
 
-onoremap il( :<C-U>call SmartInner(v:count, 1, "(", "i")<CR>
-onoremap il[ :<C-U>call SmartInner(v:count, 1, "[", "i")<CR>
-onoremap il< :<C-U>call SmartInner(v:count, 1, "<", "i")<CR>
-onoremap il{ :<C-U>call SmartInner(v:count, 1, "{", "i")<CR>
-onoremap il" :<C-U>call SmartInner(v:count, 1, '"', "i")<CR>
-onoremap il' :<C-U>call SmartInner(v:count, 1, "'", "i")<CR>
-
-onoremap al( :<C-U>call SmartInner(v:count, 1, "(", "a")<CR>
-onoremap al[ :<C-U>call SmartInner(v:count, 1, "[", "a")<CR>
-onoremap al< :<C-U>call SmartInner(v:count, 1, "<", "a")<CR>
-onoremap al{ :<C-U>call SmartInner(v:count, 1, "{", "a")<CR>
-onoremap al" :<C-U>call SmartInner(v:count, 1, '"', "a")<CR>
-onoremap al' :<C-U>call SmartInner(v:count, 1, "'", "a")<CR>
-
-" select inside or outside delimiters when cursor is not between
-nnoremap vin( :<C-U>call SmartInner(v:count, 0, "(", "i")<CR>
-nnoremap vin[ :<C-U>call SmartInner(v:count, 0, "[", "i")<CR>
-nnoremap vin< :<C-U>call SmartInner(v:count, 0, "<", "i")<CR>
-nnoremap vin{ :<C-U>call SmartInner(v:count, 0, "{", "i")<CR>
-nnoremap vin" :<C-U>call SmartInner(v:count, 0, '"', "i")<CR>
-nnoremap vin' :<C-U>call SmartInner(v:count, 0, "'", "i")<CR>
-
-nnoremap van( :<C-U>call SmartInner(v:count, 0, "(", "a")<CR>
-nnoremap van[ :<C-U>call SmartInner(v:count, 0, "[", "a")<CR>
-nnoremap van< :<C-U>call SmartInner(v:count, 0, "<", "a")<CR>
-nnoremap van{ :<C-U>call SmartInner(v:count, 0, "{", "a")<CR>
-nnoremap van" :<C-U>call SmartInner(v:count, 0, '"', "a")<CR>
-nnoremap van' :<C-U>call SmartInner(v:count, 0, "'", "a")<CR>
-
-nnoremap vil( :<C-U>call SmartInner(v:count, 1, "(", "i")<CR>
-nnoremap vil[ :<C-U>call SmartInner(v:count, 1, "[", "i")<CR>
-nnoremap vil< :<C-U>call SmartInner(v:count, 1, "<", "i")<CR>
-nnoremap vil{ :<C-U>call SmartInner(v:count, 1, "{", "i")<CR>
-nnoremap vil" :<C-U>call SmartInner(v:count, 1, '"', "i")<CR>
-nnoremap vil' :<C-U>call SmartInner(v:count, 1, "'", "i")<CR>
-
-nnoremap val( :<C-U>call SmartInner(v:count, 1, "(", "a")<CR>
-nnoremap val[ :<C-U>call SmartInner(v:count, 1, "[", "a")<CR>
-nnoremap val< :<C-U>call SmartInner(v:count, 1, "<", "a")<CR>
-nnoremap val{ :<C-U>call SmartInner(v:count, 1, "{", "a")<CR>
-nnoremap val" :<C-U>call SmartInner(v:count, 1, '"', "a")<CR>
-nnoremap val' :<C-U>call SmartInner(v:count, 1, "'", "a")<CR>
 

@@ -19,6 +19,7 @@ export software="/Users/evan/Software"
 export saav="/Users/evan/Software/SAAV-structural-mapping"
 export aenea="/Users/evan/Software/aenea"
 export table2md="csvtomd"
+export talon="/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon"
 export temp="/Users/evan/Academics/Research/Meren/MATS_NSERC/Synechococcus_DAVEWARD"
 
 # bash prompt
@@ -59,5 +60,6 @@ export PATH=$HOME/Users/evan/Software/DESMAN/scripts:$PATH
 # permission settings here
 mkdir -p $software/dotfiles/.ipython && cp -r ~/.ipython/* $software/dotfiles/.ipython
 mkdir -p $software/dotfiles/.vim && cp -r ~/.vim/* $software/dotfiles/.vim
-mkdir -p $software/dotfiles/.vim && cp -r ~/.jupyter/* .jupyter/
+mkdir -p $software/dotfiles/.jupyter && cp -r ~/.jupyter/* $software/dotfiles/.jupyter
+mkdir -p $software/dotfiles/.talon && cp -r ~/.talon/* $software/dotfiles/.talon
 rm -rf $software/dotfiles/.vim/bundle/*/.git/

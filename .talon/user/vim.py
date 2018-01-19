@@ -10,6 +10,10 @@ vimmap.update(pythonmap)
 
 LEADER = 'space'
 
+# hacky ways for repeat commands that take numbers as variables (there is another one of these in std)
+# this doesn't work with buff 
+vimmap.update({'%d buff' % k: [Key('escape shift-right')]*k for k in range(1, 10)})
+vimmap.update({'%d ruff' % k: [Key('escape shift-left')]*k for k in range(1, 10)})
 
 cursor_movement = {
     # within line search
@@ -24,6 +28,12 @@ cursor_movement = {
 
     # line movement
     'fly'                   : Key('G'),
+
+    # variations of slap
+    'slapper' : Key('escape shift-a enter'),
+    'coder' : Key('escape shift-a : enter tab'),
+    'slender' : Key('escape shift-a enter tab'),
+
 }
 
 viewport = {
@@ -48,7 +58,7 @@ window_handler = {
 plugins = {
     # surround plugin
     'flurry'                :  Key("cs"),
-    'you surrey'            :  Key("y, s, i, w"),
+    'you surrey'            :  Key("ysiw"),
 
     # tagbar, nerdtree
     'tag-bar'               :  Key("escape %s t" % LEADER),
@@ -104,11 +114,18 @@ primitive_commands = {
     'nex'          : Key("n"),
     'bex'          : Key("N"),
 
+    'para' : Key("escape o enter"),
+    'line' : Key("escape o"),
+
+    'run it' : Key("escape %s w cmd-l up enter" % LEADER),
+
     }
 
 common_names = {
-    "vim rc" : Key("~/.vimrc"),
-    "(dido | title)" : Key("d$"),
+    "vim our see" : Key("~/.vimrc"),
+    "vim" : Key("vim"),
+    "dido" : Key("d$"),
+    "leader" : Key("%s" % LEADER),
 }
 
 vimmap.update(primitive_commands)
@@ -116,6 +133,7 @@ vimmap.update(cursor_movement)
 vimmap.update(window_handler)
 vimmap.update(plugins)
 vimmap.update(viewport)
+vimmap.update(common_names)
 
 ctx.keymap(vimmap)
 

@@ -9,9 +9,9 @@ alpha = {}
 alpha.update(dict(alnum))
 alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
-alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in alnum})
-alpha.update({'command shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
+alpha.update({'corey %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
+alpha.update({'commy %s' % k: Key('cmd-%s' % v) for k, v in alnum})
+alpha.update({'commy ship %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in alnum})
 
 mapping = {
@@ -57,6 +57,7 @@ formatters = {
     'kebab':        (True,  lambda i, word, _: word if i == 0 else '-'+word),
     'dotword':      (True,  lambda i, word, _: word if i == 0 else '.'+word),
     'smash':        (True,  lambda i, word, _: word),
+    'proper':       (True, lambda i, word, _: word.capitalize()),
     'title':        (False, lambda i, word, _: word.capitalize()),
     'allcaps':      (False, lambda i, word, _: word.upper()),
     'string':       (False, surround('"')),
@@ -88,11 +89,18 @@ def FormatText(m):
         sep = ''
     Str(sep.join(words))(None)
 
-
 keymap = {}
+
+# hacky ways for repeat commands that take numbers as variables
+keymap.update({'%d work' % k: [Key('alt-backspace')]*k for k in range(1, 10)})
+keymap.update({'%d chuck' % k: [Key('backspace')]*k for k in range(1, 10)})
+keymap.update({'%d left' % k: [Key('left')]*k for k in range(1, 10)})
+keymap.update({'%d right' % k: [Key('right')]*k for k in range(1, 10)})
+keymap.update({'%d box' % k: ['box']*k for k in range(1, 10)})
+
 keymap.update(alpha)
 keymap.update({
-    'phrase <dgndictation> [over]': text,
+    'say <dgndictation> [over]': text,
     'word <dgnwords>': word,
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
@@ -103,6 +111,7 @@ keymap.update({
     'down':  Key('down'),
 
     'chuck': Key('backspace'),
+    'work' : Key('alt-backspace'),
 
     'slap': Key('enter'),
     'slapper': [Key('cmd-right enter')],
@@ -118,8 +127,8 @@ keymap.update({
     'colon': ':',
     'lacket': '[',
     'bracket': ']',
-    'larent': '(',
-    'parent': ')',
+    'larry': '(',
+    'perry': ')',
     'lace': '{',
     'brace': '}',
     'langle': '<',
@@ -137,15 +146,18 @@ keymap.update({
     'quote': "'",
     'triple quote': "'''",
     'triple backtick': "'''",
-    '(dot | period)': '.',
+    '(dock | period)': '.',
     'conner': ',',
     'spamma': ', ',
     'space': ' ',
     'slash': '/',
     'backslash': '\\',
 
+    'anvio' : Key('anvio '),
+    'quake' : Key(' = '),
+
     # these are really for bash
-    '(dot dot | dotdot)': '..',
+    '(dock dock | dockdock)': '..',
     'cd': 'cd ',
     'our em': 'rm ',
     'run make durr': 'mkdir ',
@@ -157,11 +169,11 @@ keymap.update({
     'run git pull': 'git pull ',
     'run git status': 'git status ',
     'run git add': 'git add ',
-    'run (them | vim)': 'vim ',
     'run ellis': 'ls\n',
     'dot pie': '.py',
 
-    'args': ['()', Key('left')],
+    'args': Key("() left"),
+    'square' : Key("[] left"),
     'empty list': '[]',
     'empty dict': '{}',
 
@@ -180,13 +192,10 @@ keymap.update({
     'equals': '=',
     'call': '()',
 
-    'new window': Key('cmd-n'),
     'next window': Key('cmd-`'),
     'last window': Key('cmd-shift-`'),
     'next app': Key('cmd-tab'),
     'last app': Key('cmd-shift-tab'),
-    'next tab': Key('ctrl-tab'),
-    'new tab': Key('cmd-t'),
 
     'click': lambda x: ctrl.mouse_click(),
 })

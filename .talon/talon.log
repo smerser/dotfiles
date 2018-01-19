@@ -23411,3 +23411,530 @@ SyntaxError: invalid syntax
 01-14 01:13:28 DEBUG [~] /Users/evan/.talon/user/python.py
 01-14 01:13:40 DEBUG [~] /Users/evan/.talon/user/vim.py
 01-14 01:14:11 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 17:43:08  INFO Talon starting with /Users/evan/.talon
+01-14 17:43:09 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-14 17:43:09 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-14 17:43:09 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-14 17:43:09 DEBUG [+] /Users/evan/.talon/user/new.py
+01-14 17:43:09 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-14 17:43:09 DEBUG [+] /Users/evan/.talon/user/python.py
+01-14 17:43:09 DEBUG [+] /Users/evan/.talon/user/std.py
+01-14 17:43:09 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-14 18:21:15 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 18:22:04 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 18:51:49 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 18:52:53 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 18:53:21 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 18:54:43 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 18:55:06 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 19:04:08 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 19:04:09 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 19:04:25 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 19:08:09 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 19:08:14 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 19:08:16 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 19:12:48 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 19:12:58 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 19:38:28  INFO Talon starting with /Users/evan/.talon
+01-14 19:38:29 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-14 19:38:29 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-14 19:38:29 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-14 19:38:29 DEBUG [+] /Users/evan/.talon/user/new.py
+01-14 19:38:29 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-14 19:38:29 DEBUG [+] /Users/evan/.talon/user/python.py
+01-14 19:38:29 DEBUG [+] /Users/evan/.talon/user/std.py
+01-14 19:38:29 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-14 20:32:08 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 21:02:56 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 21:03:11 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 21:53:31 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 21:53:32 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 21:55:12 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 21:55:15 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 22:53:54  INFO Talon starting with /Users/evan/.talon
+01-14 22:53:54 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-14 22:53:54 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-14 22:53:54 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-14 22:53:54 DEBUG [+] /Users/evan/.talon/user/new.py
+01-14 22:53:54 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-14 22:53:54 DEBUG [+] /Users/evan/.talon/user/python.py
+01-14 22:53:54 DEBUG [+] /Users/evan/.talon/user/std.py
+01-14 22:53:54 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-14 22:59:14 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 22:59:47 DEBUG [~] /Users/evan/.talon/user/std.py
+01-14 22:59:48 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-14 23:00:33 DEBUG [~] /Users/evan/.talon/user/python.py
+01-14 23:00:39 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 00:20:01  INFO Talon starting with /Users/evan/.talon
+01-15 00:20:02 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-15 00:20:02 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-15 00:20:02 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-15 00:20:02 DEBUG [+] /Users/evan/.talon/user/new.py
+01-15 00:20:02 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-15 00:20:02 DEBUG [+] /Users/evan/.talon/user/python.py
+01-15 00:20:02 DEBUG [+] /Users/evan/.talon/user/std.py
+01-15 00:20:02 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-15 00:20:12 ERROR user.vim (/Users/evan/.talon/user/vim.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/vim.py", line 120, in <module>
+    ctx.keymap(vimmap)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 178, in keymap
+    self.load_grammar()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 155, in load_grammar
+    engine.load(self.grammar)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 110, in load
+    resp = grammar.load(self)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/grammar.py", line 108, in load
+    return self.cmd('g.load', main_rule='{}::main'.format(self.name), data=self.grammar.data)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/grammar.py", line 128, in cmd
+    return self.engine.cmd(cmd, **kwargs)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 98, in cmd
+    raise EngineCmdErr('engine command "{}" failed'.format(cmd))
+talon.engine.EngineCmdErr: engine command "g.load" failed
+01-15 00:20:12    IO Exception in thread Thread-3:
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/threading.py", line 914, in _bootstrap_inner
+    self.run()
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/threading.py", line 862, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 58, in check_ready
+    j = self.cmd('status')
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 98, in cmd
+    raise EngineCmdErr('engine command "{}" failed'.format(cmd))
+talon.engine.EngineCmdErr: engine command "status" failed
+01-15 00:20:12    IO 
+01-15 16:30:30  INFO Talon starting with /Users/evan/.talon
+01-15 16:30:31 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-15 16:30:31 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-15 16:30:31 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-15 16:30:31 DEBUG [+] /Users/evan/.talon/user/new.py
+01-15 16:30:31 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-15 16:30:31 DEBUG [+] /Users/evan/.talon/user/python.py
+01-15 16:30:31 DEBUG [+] /Users/evan/.talon/user/std.py
+01-15 16:30:31 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-15 19:22:56  INFO Talon starting with /Users/evan/.talon
+01-15 19:22:56 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-15 19:22:57 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-15 19:22:57 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-15 19:22:57 DEBUG [+] /Users/evan/.talon/user/new.py
+01-15 19:22:57 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-15 19:22:57 DEBUG [+] /Users/evan/.talon/user/python.py
+01-15 19:22:57 DEBUG [+] /Users/evan/.talon/user/std.py
+01-15 19:22:57 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-15 19:26:33 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:26:47 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:27:46 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:29:22 DEBUG [~] /Users/evan/.talon/user/std.py
+01-15 19:29:25 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:30:29 DEBUG [~] /Users/evan/.talon/user/std.py
+01-15 19:34:28 DEBUG [~] /Users/evan/.talon/user/std.py
+01-15 19:34:52 DEBUG [~] /Users/evan/.talon/user/std.py
+01-15 19:37:04 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:37:56 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:39:36 ERROR cb error <class 'talon.engine.Engine'> cb=<bound method Context.on_phrase of <talon.voice.Context object at 0x0000000109ab6e90>> topic="phrase"
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/dispatch.py", line 23, in safe_call
+    cb(msg)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 145, in on_phrase
+    self.run(word)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 126, in run
+    action(rule)
+  File "/Users/evan/.talon/user/std.py", line 80, in FormatText
+    smash, func = formatters[name]
+KeyError: 'Key'
+01-15 19:41:30 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:41:58 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:51:03 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:54:58 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:56:40 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:57:17 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 19:58:37 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:01:30 ERROR cb error <class 'talon.engine.Engine'> cb=<bound method Context.on_phrase of <talon.voice.Context object at 0x0000000109bcee90>> topic="phrase"
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/dispatch.py", line 23, in safe_call
+    cb(msg)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 145, in on_phrase
+    self.run(word)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 126, in run
+    action(rule)
+  File "/Users/evan/.talon/user/std.py", line 80, in FormatText
+    smash, func = formatters[name]
+KeyError: 'key'
+01-15 20:04:23 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:06:46 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:07:25 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:07:50 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:08:41 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:11:23 DEBUG [~] /Users/evan/.talon/user/python.py
+01-15 20:14:45 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-15 20:15:59 DEBUG [~] /Users/evan/.talon/user/python.py
+01-15 20:17:48 DEBUG [~] /Users/evan/.talon/user/std.py
+01-15 20:18:26 DEBUG [~] /Users/evan/.talon/user/std.py
+01-16 18:46:51  INFO Talon starting with /Users/evan/.talon
+01-16 18:46:51 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-16 18:46:51 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-16 18:46:51 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-16 18:46:51 DEBUG [+] /Users/evan/.talon/user/new.py
+01-16 18:46:51 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-16 18:46:51 DEBUG [+] /Users/evan/.talon/user/python.py
+01-16 18:46:51 DEBUG [+] /Users/evan/.talon/user/std.py
+01-16 18:46:51 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-17 19:32:04  INFO Talon starting with /Users/evan/.talon
+01-17 19:32:05 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-17 19:32:05 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-17 19:32:05 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-17 19:32:05 DEBUG [+] /Users/evan/.talon/user/new.py
+01-17 19:32:05 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-17 19:32:05 DEBUG [+] /Users/evan/.talon/user/python.py
+01-17 19:32:05 DEBUG [+] /Users/evan/.talon/user/std.py
+01-17 19:32:05 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-17 19:32:15    IO Exception in thread Thread-3:
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/threading.py", line 914, in _bootstrap_inner
+    self.run()
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/threading.py", line 862, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 58, in check_ready
+    j = self.cmd('status')
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 98, in cmd
+    raise EngineCmdErr('engine command "{}" failed'.format(cmd))
+talon.engine.EngineCmdErr: engine command "status" failed
+01-17 19:32:15 ERROR user.vim (/Users/evan/.talon/user/vim.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/vim.py", line 132, in <module>
+    ctx.keymap(vimmap)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 178, in keymap
+    self.load_grammar()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/voice.py", line 155, in load_grammar
+    engine.load(self.grammar)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 110, in load
+    resp = grammar.load(self)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/grammar.py", line 108, in load
+    return self.cmd('g.load', main_rule='{}::main'.format(self.name), data=self.grammar.data)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/grammar.py", line 128, in cmd
+    return self.engine.cmd(cmd, **kwargs)
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/engine.py", line 98, in cmd
+    raise EngineCmdErr('engine command "{}" failed'.format(cmd))
+talon.engine.EngineCmdErr: engine command "g.load" failed
+01-17 19:32:15    IO 
+01-17 19:32:52  INFO Talon starting with /Users/evan/.talon
+01-17 19:32:52 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-17 19:32:52 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-17 19:32:52 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-17 19:32:52 DEBUG [+] /Users/evan/.talon/user/new.py
+01-17 19:32:52 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-17 19:32:52 DEBUG [+] /Users/evan/.talon/user/python.py
+01-17 19:32:52 DEBUG [+] /Users/evan/.talon/user/std.py
+01-17 19:32:52 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-18 16:29:43  INFO Talon starting with /Users/evan/.talon
+01-18 16:29:43 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-18 16:29:44 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-18 16:29:44 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-18 16:29:44 DEBUG [+] /Users/evan/.talon/user/new.py
+01-18 16:29:44 ERROR user.new (/Users/evan/.talon/user/new.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/new.py", line 9, in <module>
+    ctx.keymap(python_mappings)
+NameError: name 'ctx' is not defined
+01-18 16:29:44 DEBUG [+] /Users/evan/.talon/user/python.py
+01-18 16:29:44 DEBUG [+] /Users/evan/.talon/user/std.py
+01-18 16:29:44 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-18 16:46:16 DEBUG [+] /Users/evan/.talon/user/new.py
+01-18 16:48:54 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:49:48 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:50:22 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:51:45 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:51:46 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:51:59 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:54:39 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 16:55:14 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 16:56:03 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 16:56:31 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 17:03:20 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 17:03:23 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 17:30:09 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 17:30:11 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 17:43:47 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 17:43:49 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:27:12 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:31:03 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:32:41 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:33:21 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:33:21 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:34:31 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:39:26 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:41:35 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:41:56 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:42:02 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:45:41 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:45:41 ERROR user.std (/Users/evan/.talon/user/std.py) reload failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 28, in load
+    module = importlib.reload(self[path])
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/importlib/__init__.py", line 166, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 627, in _exec
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/std.py", line 95, in <module>
+    keymap.update({'%d chuck' % k: str(k) + Key('backspace') for k in range(1, 10)})
+  File "/Users/evan/.talon/user/std.py", line 95, in <dictcomp>
+    keymap.update({'%d chuck' % k: str(k) + Key('backspace') for k in range(1, 10)})
+TypeError: unsupported operand type(s) for +: 'str' and 'Key'
+01-18 21:45:51 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:45:51 ERROR user.std (/Users/evan/.talon/user/std.py) reload failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 28, in load
+    module = importlib.reload(self[path])
+  File "/Applications/Talon.app/Contents/Resources/pypy/lib-python/3/importlib/__init__.py", line 166, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 627, in _exec
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Users/evan/.talon/user/std.py", line 95, in <module>
+    keymap.update({'%d chuck' % k: str(k) + Key('backspace') for k in range(1, 10)})
+  File "/Users/evan/.talon/user/std.py", line 95, in <dictcomp>
+    keymap.update({'%d chuck' % k: str(k) + Key('backspace') for k in range(1, 10)})
+TypeError: unsupported operand type(s) for +: 'str' and 'Key'
+01-18 21:49:29 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:49:37 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:49:45 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 21:49:49 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 21:49:53 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:49:57 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:52:50 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 21:52:58 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 21:53:30 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:08:24  INFO Talon starting with /Users/evan/.talon
+01-18 22:08:24 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-18 22:08:25 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-18 22:08:25 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-18 22:08:25 DEBUG [+] /Users/evan/.talon/user/new.py
+01-18 22:08:25 DEBUG [+] /Users/evan/.talon/user/python.py
+01-18 22:08:25 DEBUG [+] /Users/evan/.talon/user/std.py
+01-18 22:08:25 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-18 22:11:51 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 22:16:39 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:18:31 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:23:35 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 22:23:36 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:25:46 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 22:27:00 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 22:27:06 DEBUG [~] /Users/evan/.talon/user/std.py
+01-18 22:27:09 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:27:22 DEBUG [~] /Users/evan/.talon/user/vim.py
+01-18 22:28:02 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 22:30:59 DEBUG [~] /Users/evan/.talon/user/python.py
+01-18 22:34:58  INFO Talon starting with /Users/evan/.talon
+01-18 22:34:58 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/eye.py
+01-18 22:34:59 ERROR eye (/Applications/Talon.app/Contents/Resources/plugins/eye.py) import failed
+Traceback (most recent call last):
+  File "/Applications/Talon.app/Contents/Resources/loader.py", line 40, in load
+    spec.loader.exec_module(module)
+  File "<builtin>/frozen importlib._bootstrap_external", line 686, in exec_module
+  File "<frozen importlib._bootstrap>", line 223, in _call_with_frames_removed
+  File "/Applications/Talon.app/Contents/Resources/plugins/eye.py", line 158, in <module>
+    tracker = eye.Eye()
+  File "/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon/eye.py", line 138, in __init__
+    raise EyeOpenErr('Eye Tracker failed to open')
+talon.eye.EyeOpenErr: Eye Tracker failed to open
+01-18 22:34:59 DEBUG [+] /Applications/Talon.app/Contents/Resources/plugins/repl.py
+01-18 22:34:59 DEBUG [+] /Users/evan/.talon/user/new.py
+01-18 22:34:59 DEBUG [+] /Users/evan/.talon/user/python.py
+01-18 22:34:59 DEBUG [+] /Users/evan/.talon/user/std.py
+01-18 22:34:59 DEBUG [+] /Users/evan/.talon/user/vim.py
+01-18 23:05:29 DEBUG [~] /Users/evan/.talon/user/std.py

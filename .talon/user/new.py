@@ -6,7 +6,7 @@ python_mappings = {
     "this is just a test" : Key("F"),
 }
 
-ctx.keymap(python_mappings)
+#ctx.keymap(python_mappings)
 
 def unload():
     ctx.disable()

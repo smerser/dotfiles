@@ -89,6 +89,8 @@ def FormatText(m):
         sep = ''
     Str(sep.join(words))(None)
 
+ctx = Context('input')
+
 keymap = {}
 
 # hacky ways for repeat commands that take numbers as variables
@@ -96,7 +98,7 @@ keymap.update({'%d work' % k: [Key('alt-backspace')]*k for k in range(1, 10)})
 keymap.update({'%d chuck' % k: [Key('backspace')]*k for k in range(1, 10)})
 keymap.update({'%d left' % k: [Key('left')]*k for k in range(1, 10)})
 keymap.update({'%d right' % k: [Key('right')]*k for k in range(1, 10)})
-keymap.update({'%d box' % k: ['box']*k for k in range(1, 10)})
+keymap.update({'%d box' % k: ['x']*k for k in range(1, 10)})
 
 keymap.update(alpha)
 keymap.update({
@@ -116,8 +118,8 @@ keymap.update({
     'slap': Key('enter'),
     'slapper': [Key('cmd-right enter')],
     'skate': Key('esc'),
-    'question [mark]': '?',
-    '(minus | hyphen)': '-',
+    'question': '?',
+    'dash': '-',
     'plus': '+',
     'tilde': '~',
     '(bang | exclamation mark)': '!',
@@ -145,7 +147,7 @@ keymap.update({
     'dubquote': '"',
     'quote': "'",
     'triple quote': "'''",
-    'triple backtick': "'''",
+    'triple backtick': "```",
     '(dock | period)': '.',
     'conner': ',',
     'spamma': ', ',
@@ -153,29 +155,17 @@ keymap.update({
     'slash': '/',
     'backslash': '\\',
 
-    'anvio' : Key('anvio '),
+    'anvio' : Key('anvio'),
     'quake' : Key(' = '),
 
-    # these are really for bash
-    '(dock dock | dockdock)': '..',
-    'cd': 'cd ',
-    'our em': 'rm ',
-    'run make durr': 'mkdir ',
-    'run git': 'git ',
-    'run git clone': 'git clone ',
-    'run git diff': 'git diff ',
-    'run git commit': 'git commit ',
-    'run git push': 'git push ',
-    'run git pull': 'git pull ',
-    'run git status': 'git status ',
-    'run git add': 'git add ',
-    'run ellis': 'ls\n',
     'dot pie': '.py',
 
     'args': Key("() left"),
     'square' : Key("[] left"),
+    'dish': Key('{} left'),
+    'call' : Key("()"),
     'empty list': '[]',
-    'empty dict': '{}',
+    'empty dish': '{}',
 
     'state deaf': 'def ', 
     'state else if': 'elif ',
@@ -190,7 +180,6 @@ keymap.update({
 
     'is equal to': ' == ',
     'equals': '=',
-    'call': '()',
 
     'next window': Key('cmd-`'),
     'last window': Key('cmd-shift-`'),
@@ -198,4 +187,11 @@ keymap.update({
     'last app': Key('cmd-shift-tab'),
 
     'click': lambda x: ctrl.mouse_click(),
+
+    # a bunch of common names that i use
+    "vim our see" : Key("~/.vimrc"),
+    "bash profile" : Key("~/.bash_profile"),
+    "vim" : Key("vim"),
 })
+
+ctx.keymap(keymap)

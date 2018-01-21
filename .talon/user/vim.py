@@ -1,12 +1,7 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
-ctx = Context('vim')
-
-from .std import keymap
-from .python import pythonmap
+ctx = Context('vim', bundle='com.googlecode.iterm2', func=lambda app, win: 'vim' in win.title)
 
 vimmap = {}
-vimmap.update(keymap)
-vimmap.update(pythonmap)
 
 LEADER = 'space'
 
@@ -15,7 +10,8 @@ LEADER = 'space'
 vimmap.update({'%d buff' % k: [Key('escape shift-right')]*k for k in range(1, 10)})
 vimmap.update({'%d ruff' % k: [Key('escape shift-left')]*k for k in range(1, 10)})
 
-cursor_movement = {
+# share this with bash.py
+common_to_bash = {
     # within line search
     "gif"                   : Key("F"),
     "til"                   : Key("t"),
@@ -23,6 +19,10 @@ cursor_movement = {
     "bane"                  : Key("ge"),
     "ship bane"             : Key("gE"),
 
+    "die line" : Key("dd"),
+}
+
+cursor_movement = {
     # line search
     'flexy'                 : Key('0'),
 
@@ -51,15 +51,13 @@ window_handler = {
     'east'                  : Key('ctrl-l'),
     'west'                  : Key('ctrl-h'),
     'close (buff | buffer)' : Key('%s c' % LEADER),
-    'quit (split | window)' : Key('%s q' % LEADER),
+    'write it'              : Key('escape %s w' % LEADER),
+    'write it quit it'      : Key('escape %s w %s q' % (LEADER, LEADER)),
+    'quit it'               : Key('%s q' % LEADER),
     'force quit split'      : Key(':q! enter'),
 }
 
 plugins = {
-    # surround plugin
-    'flurry'                :  Key("cs"),
-    'you surrey'            :  Key("ysiw"),
-
     # tagbar, nerdtree
     'tag-bar'               :  Key("escape %s t" % LEADER),
 
@@ -83,9 +81,6 @@ primitive_commands = {
 
     'bar'         : Key('V'),
     'block'       : Key('ctrl-v'),
-    'yank'        : Key('y'),
-    'paste'       : Key('p'),
-    'post'        : Key('P'),
 
     # SmartInner
     'winner'      : Key('in'),
@@ -104,7 +99,6 @@ primitive_commands = {
     'alect'        : Key("'>"),
     'retter'       : Key("'"),
 
-    'save'         : Key('%s w' % LEADER),
     'edit'         : Key('%s e space' % LEADER),
     'source'       : Key(':so space'),
     'settings'     : Key(':set space'),
@@ -115,15 +109,12 @@ primitive_commands = {
     'bex'          : Key("N"),
 
     'para' : Key("escape o enter"),
-    'line' : Key("escape o"),
 
     'run it' : Key("escape %s w cmd-l up enter" % LEADER),
 
     }
 
 common_names = {
-    "vim our see" : Key("~/.vimrc"),
-    "vim" : Key("vim"),
     "dido" : Key("d$"),
     "leader" : Key("%s" % LEADER),
 }
@@ -134,6 +125,8 @@ vimmap.update(window_handler)
 vimmap.update(plugins)
 vimmap.update(viewport)
 vimmap.update(common_names)
+vimmap.update(common_to_bash)
+
 
 ctx.keymap(vimmap)
 

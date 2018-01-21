@@ -20,6 +20,7 @@ export saav="/Users/evan/Software/SAAV-structural-mapping"
 export aenea="/Users/evan/Software/aenea"
 export table2md="csvtomd"
 export talon="/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon"
+export talonscripts="/Users/evan/.talon/user"
 export temp="/Users/evan/Academics/Research/Meren/MATS_NSERC/Synechococcus_DAVEWARD"
 
 # bash prompt
@@ -57,9 +58,10 @@ export PATH=$PATH:$CENTRIFUGE_BASE/centrifuge
 export PATH=$HOME/Users/evan/Software/DESMAN/scripts:$PATH
 
 # copies dotfolder contents into $software/dotfiles. If you get permission denied spam, change
-# permission settings here
-mkdir -p $software/dotfiles/.ipython && cp -r ~/.ipython/* $software/dotfiles/.ipython
-mkdir -p $software/dotfiles/.vim && cp -r ~/.vim/* $software/dotfiles/.vim
-mkdir -p $software/dotfiles/.jupyter && cp -r ~/.jupyter/* $software/dotfiles/.jupyter
-mkdir -p $software/dotfiles/.talon && cp -r ~/.talon/* $software/dotfiles/.talon
+# permission settings here. notice that this is only 4 dotfolder contents, dotfiles are symlinked
+rm -rf $software/dotfiles/.ipython && mkdir -p $software/dotfiles/.ipython && cp -r ~/.ipython/* $software/dotfiles/.ipython
+rm -rf $software/dotfiles/.vim && mkdir -p $software/dotfiles/.vim && cp -r ~/.vim/* $software/dotfiles/.vim
+rm -rf $software/dotfiles/.jupyter && mkdir -p $software/dotfiles/.jupyter && cp -r ~/.jupyter/* $software/dotfiles/.jupyter
+rm -rf $software/dotfiles/.talon && mkdir -p $software/dotfiles/.talon && cp -r ~/.talon/* $software/dotfiles/.talon
 rm -rf $software/dotfiles/.vim/bundle/*/.git/
+

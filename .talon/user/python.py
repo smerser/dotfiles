@@ -2,12 +2,6 @@ from talon.voice import Word, Context, Key, Rep, Str, press
 from talon import ctrl
 import string
 
-mapping = {
-    'semicolon': ';',
-    r'new-line': '\n',
-    r'new-paragraph': '\n\n',
-}
-
 def parse_word(word):
     word = word.lstrip('\\').split('\\', 1)[0]
     word = mapping.get(word, word)
@@ -18,15 +12,17 @@ def text(m):
     words = [parse_word(word) for word in tmp]
     Str(' '.join(words))(None)
 
+ctx = Context('python', bundle='com.googlecode.iterm2', func=lambda app, win: '.py' in win.title)
+
 pythonmap = {}
 pythonmap.update({
     'def'          :  'def ',
     'loop'         :  'for ',
     'class'        :  'class ',
     "from"         :  Key("from "),
-    "in"           :  Key("in "),
+    "lint"           :  Key("in "),
     "import"       :  Key("import "),
-    "if"           :  Key("if "),
+    "sift"           :  Key("if "),
     "else"         :  Key("else"),
     "elif"         :  Key("elif "),
     "try"          :  Key("try "),
@@ -52,4 +48,9 @@ pythonmap.update({
     "numpy" : Key("numpy"),
 
 })
+
+ctx.keymap(pythonmap)
+
+def unload():
+    ctx.disable()
 

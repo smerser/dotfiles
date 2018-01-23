@@ -11,7 +11,8 @@ this is because i use vim-like editing in my bash, so i port over some of the ba
 bashmap = {
     '(dock dock | dockdock)' : '..',
     'cd'                     : 'cd ',
-    'our em'                 : 'rm ',
+    'rm'                 : 'rm ',
+    'our mrf'                 : 'rm -rf ',
     'make durr'              : 'mkdir ',
     'run get'                : 'git ',
     'run get clone'          : 'git clone ',

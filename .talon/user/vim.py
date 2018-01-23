@@ -40,7 +40,7 @@ viewport = {
     "more" : Key("shift-j"),
     "less" : Key("shift-k"),
     "ellie" : Key("shift-u"),
-    "vader" : Key("shift-d"),
+    "fader" : Key("shift-d"),
 }
 
 window_handler = {

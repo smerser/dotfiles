@@ -99,6 +99,8 @@ keymap.update({'%d chuck' % k: [Key('backspace')]*k for k in range(1, 10)})
 keymap.update({'%d left' % k: [Key('left')]*k for k in range(1, 10)})
 keymap.update({'%d right' % k: [Key('right')]*k for k in range(1, 10)})
 keymap.update({'%d box' % k: ['x']*k for k in range(1, 10)})
+keymap.update({'%d undo' % k: ['u']*k for k in range(1, 10)})
+keymap.update({'%d redo' % k: [Key('ctrl-r')]*k for k in range(1, 10)})
 
 keymap.update(alpha)
 keymap.update({
@@ -185,6 +187,7 @@ keymap.update({
     'last window': Key('cmd-shift-`'),
     'next app': Key('cmd-tab'),
     'last app': Key('cmd-shift-tab'),
+    'spotlight' : Key('cmd-space'),
 
     'click': lambda x: ctrl.mouse_click(),
 
@@ -192,6 +195,12 @@ keymap.update({
     "vim our see" : Key("~/.vimrc"),
     "bash profile" : Key("~/.bash_profile"),
     "vim" : Key("vim"),
+    "zotero" : "zotero",
+    "iterm" : "iterm",
+    "chrome" : "chrome",
+    "github" : "github",
+    "utils" : "utils",
+    "ee keyfull" : "ekiefl",
 })
 
 ctx.keymap(keymap)

@@ -59,7 +59,8 @@ window_handler = {
 
 plugins = {
     # tagbar, nerdtree
-    'tag-bar'               :  Key("escape %s t" % LEADER),
+   '(tack board | tag-bar)'               :  Key("escape %s t" % LEADER),
+   'nerd'               :  Key("escape %s o" % LEADER),
 
     # Tabularize
     'tabularize'            :  Key(":Tab space /"),
@@ -78,6 +79,8 @@ plugins = {
 primitive_commands = {
     'undo'                  :  Key('escape u'),
     'redo'                  :  Key('escape ctrl-r'),
+
+    'oozey' : Key("ctrl-o"),
 
     'bar'         : Key('V'),
     'block'       : Key('ctrl-v'),
@@ -102,6 +105,8 @@ primitive_commands = {
     'edit'         : Key('%s e space' % LEADER),
     'source'       : Key(':so space'),
     'settings'     : Key(':set space'),
+    'settings paste'     : [":set", Key("space"), "paste", Key("enter")],
+    'settings no paste'     : [":set", Key("space"), "nopaste", Key("enter")],
 
     # search stuff
     'cancel hits'  : Key("/asdf enter"),

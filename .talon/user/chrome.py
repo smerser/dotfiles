@@ -17,6 +17,11 @@ chromemap.update({
     "go to github" : [Key("escape escape cmd-l"), "github.com", Key("enter")],
     "go to facebook" : [Key("escape escape cmd-l"), "facebook.com", Key("enter")],
     "go to gmail" : [Key("escape escape cmd-l"), "gmail.com", Key("enter")],
+    "go to google" : [Key("escape escape cmd-l"), "google.com", Key("enter")],
+    "go to read it" : [Key("escape escape cmd-l"), "reddit.com", Key("enter")],
+    "go to drive" : [Key("escape escape cmd-l"), "drive.google.com", Key("enter")],
+    "go to netflix" : [Key("escape escape cmd-l"), "netflix.com", Key("enter")],
+    "go to lab fiesta" : [Key("escape escape cmd-l"), "https://github.com/merenlab/lab-fiesta", Key("enter")],
     })
 
 chromemap.update({
@@ -44,5 +49,4 @@ ctx.keymap(chromemap)
 
 def unload():
     ctx.disable()
-
 

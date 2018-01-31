@@ -12,7 +12,7 @@ def text(m):
     words = [parse_word(word) for word in tmp]
     Str(' '.join(words))(None)
 
-ctx = Context('python', bundle='com.googlecode.iterm2', func=lambda app, win: '.py' in win.title)
+ctx = Context('python', bundle='com.googlecode.iterm2', func=lambda app, win: any(s in win.title for s in ('.py', 'IPython', 'Snakefile')))
 
 pythonmap = {}
 pythonmap.update({
@@ -46,6 +46,10 @@ pythonmap.update({
 
     "scipy" : Key("scipy"),
     "numpy" : Key("numpy"),
+    "os" : Key("os "),
+
+    "numpy" : Key("numpy"),
+
 
 })
 

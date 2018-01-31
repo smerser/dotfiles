@@ -68,5 +68,6 @@ rm -rf $software/dotfiles/.jupyter && mkdir -p $software/dotfiles/.jupyter && cp
 rm -rf $software/dotfiles/.talon && mkdir -p $software/dotfiles/.talon && cp -r ~/.talon/* $software/dotfiles/.talon
 cp ~/.vimrc $software/dotfiles/.vimrc
 cp ~/.bash_profile $software/dotfiles/.bash_profile
+cp ~/.bash_aliases $software/dotfiles/.bash_aliases
 rm -rf $software/dotfiles/.vim/bundle/*/.git/
 

@@ -3,6 +3,15 @@ if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
   inoremap <silent> <C-[>OC <RIGHT>
 endif
 
+" when running :! commands, this gives access to your aliases
+let $BASH_ENV = "~/.bash_aliases"
+" every time a different buffer is loaded, the terminal's window name is changed from
+" `vim` to `<file_name_of_buffer> (vim)`
+autocmd BufEnter * execute "silent !title " . expand("%:t")
+
+" fuzzy search with ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 set nowrap
 set ai
 set history=750
@@ -32,7 +41,6 @@ nnoremap <Leader>x :xa<CR>
 :nnoremap <leader>eb :split ~/.bash_profile<cr>
 :nnoremap <leader>sv :source ~/.vimrc<cr>
 
-
 " moving around splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -42,6 +50,9 @@ nnoremap <C-H> <C-W><C-H>
 " ' is so much easier to type than ` for markers, that I switch them here
 nnoremap ' `
 nnoremap ` '
+
+:noremap <leader>fif ifor <c-o>mu in <c-o>mi:<esc>`u
+:noremap <leader>imp ifrom <c-o>mu import <c-o>mi<esc>`u
 
 " >> indents in command mode. >M idents to level defined by line above
 " command not written yet
@@ -93,6 +104,16 @@ let g:syntastic_python_checkers = ['python']
 let g:syntastic_enable_highlighting = 0
 map <leader>pp :let g:syntastic_python_checkers = ['pylint']<CR>
 
+" fold plugin
+set nofoldenable
+"let g:SimpylFold_docstring_preview = 1
+"let g:SimpylFold_fold_import = 0
+"let b:SimpylFold_fold_import = 0
+"let g:SimpylFold_fold_docstring = 0
+"let b:SimpylFold_fold_docstring = 0
+":hi Folded ctermbg=237
+":hi Folded ctermfg=013
+
 let g:jedi#show_call_signatures = "1"
 let g:jedi#use_splits_not_buffers = ""
 let g:jedi#popup_on_dot = 0
@@ -141,7 +162,9 @@ set statusline+=%{fugitive#statusline()}
 :nnoremap <C-u> :call ReturnToOriginalPosition("o")<CR>
 :nnoremap <C-i> :call ReturnToOriginalPosition("O")<CR>
 
-" smart delete for insert mode
+" adding end and start of line bash commands
+:inoremap <C-e> <C-o>$
+:inoremap <C-a> <C-o><S-i>
 
 " do you want arrow movement during insert mode disabled? then uncomment these
 "ino <down> <Nop>
@@ -151,12 +174,12 @@ set statusline+=%{fugitive#statusline()}
 
 " how far away from max cursor position is from window
 :set so=1
+" show cursorline
+:set cursorline
+:set ttyfast
+:set lazyredraw
 
 " if these are uncommented left and right switch buffer in normal mode (otherwise it's shift arrowkey)
-"no <left> <Nop>
-"no <right> <Nop>
-":map <left> :bp!<CR>
-":map <right> :bn!<CR>
 :map <s-left> :bp!<CR>
 :map <s-right> :bn!<CR>
 
@@ -170,8 +193,8 @@ inoremap <expr> <C-j>     pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>     pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " relative numbering (:RltvNmbr enables/disables) `call RltvNmbr#RltvNmbrCtrl(1)` was added to ~/.vim/plugin/RltvNmbr.vim
-hi default HL_RltvNmbr_Minus    gui=none,italic ctermfg=172   ctermbg=black guifg=yellow   guibg=black
-hi default HL_RltvNmbr_Positive gui=none,italic ctermfg=172   ctermbg=black guifg=yellow guibg=black
+hi HL_RltvNmbr_Minus    gui=none,italic ctermfg=172   ctermbg=black guifg=yellow   guibg=black
+hi HL_RltvNmbr_Positive gui=none,italic ctermfg=172   ctermbg=black guifg=yellow guibg=black
 
 " snakemake syntax highlighting
 au BufNewFile,BufRead Snakefile set syntax=snakemake

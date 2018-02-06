@@ -21,14 +21,14 @@ def click_pos(m):
     diff, pos = min([(abs(start - pos[2]), pos) for pos in mouse_history])
     return pos[:2]
 
-def delayed_click(m, button=0, times=1):
+def delayed_click(m, button=0, times=1, down=None, up=None):
     old = eye.config.control_mouse
     eye.config.control_mouse = False
     x, y = click_pos(m)
     ctrl.mouse(x, y)
     for i in range(times):
         time.sleep(0.016)
-        ctrl.mouse_click(x, y, button=button, times=i+1)
+        ctrl.mouse_click(x, y, button=button, times=i+1, down=down, up=up)
     time.sleep(0.032)
     eye.config.control_mouse = old
 
@@ -41,26 +41,29 @@ def delayed_dubclick(m):
 def delayed_tripclick(m):
     delayed_click(m, button=0, times=3)
 
-def mouse_drag(m):
-    x, y = click_pos(m)
-    ctrl.mouse_click(x, y, down=True)
+def delayed_mouse_drag(m):
+    delayed_click(m, button=0, times=1, down=True)
 
-def mouse_release(m):
-    x, y = click_pos(m)
-    ctrl.mouse_click(x, y, up=True)
+def delayed_mouse_release(m):
+    delayed_click(m, button=0, times=1, up=True)
 
 keymap = {
     'righty': delayed_right_click,
     'click': delayed_click,
     'drip': delayed_dubclick,
     'trick': delayed_tripclick,
-    'drack': mouse_drag,
-    'lease': mouse_release,
+    'press': delayed_mouse_drag,
+    'lease': delayed_mouse_release,
 
     # combinations of mouse and keypresses
-    "cossit" : [delayed_dubclick, Key("cmd-c")],
+    "drickop" : [delayed_dubclick, Key("cmd-c")],
+    "trickop" : [delayed_tripclick, Key("cmd-c")],
     "passit" : [delayed_dubclick, Key("cmd-v")],
     "cd here" : [delayed_dubclick, "cd ", Key("cmd-v"), "; ls", Key("enter")],
+
+    'screencop' : [Key('cmd-shift-ctrl-4'), delayed_mouse_drag],
+    'screenshot' : [Key('cmd-shift-4'), delayed_mouse_drag],
+
 }
 ctx.keymap(keymap)
 

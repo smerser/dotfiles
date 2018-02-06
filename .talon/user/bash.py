@@ -1,5 +1,4 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
-#ctx = Context('bash', bundle='com.googlecode.iterm2', func=lambda app, win: 'bash' in win.title)
 ctx = Context('bash', bundle='com.googlecode.iterm2')
 
 from .vim import common_to_bash
@@ -15,13 +14,18 @@ bashmap = {
     "bar hall" : "barhal",
 
     "ssh" : "ssh ",
+    "ssh long" : "ssh -L 8091:localhost:8091 ",
     '(dock dock | dockdock)' : '..',
     'cd'                     : 'cd ',
-    'rm'                 : 'rm ',
+    "(vim | fim)" : "vim ",
+    'remove'                 : 'rm ',
+    'show'                 : Key("tab tab"),
     'cat'                 : 'cat ',
     'ls'                 : 'ls ',
     "qstat" : "qstat ",
     "qdel" : "qdel ",
+    "gzip" : "gzip ",
+    "douche" : "du -sh ",
     'scp'                 : 'scp ',
     'move'                 : 'mv ',
     'python'                 : 'python ',

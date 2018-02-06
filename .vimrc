@@ -47,6 +47,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Global clipboard copy
+vnoremap <C-y> "*y
+
 " ' is so much easier to type than ` for markers, that I switch them here
 nnoremap ' `
 nnoremap ` '

@@ -39,8 +39,8 @@ cursor_movement = {
 viewport = {
     "more" : Key("shift-j"),
     "less" : Key("shift-k"),
-    "ellie" : Key("shift-u"),
-    "fader" : Key("shift-d"),
+    "lesser" : Key("shift-u"),
+    "mortar" : Key("shift-d"),
 }
 
 window_handler = {

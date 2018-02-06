@@ -113,12 +113,11 @@ keymap.update({
     'right': Key('right'),
     'up':    Key('up'),
     'down':  Key('down'),
+    'fader':  Key('pagedown'),
+    'ellie':  Key('pageup'),
 
     'zoom in' : Key('cmd-='),
     'zoom out' : Key('cmd+-'),
-
-    'screencop' : Key('cmd-shift-ctrl-4'),
-    'screenshot' : Key('cmd-shift-4'),
 
     "coffee" : Key("cmd-c"),
     "paste" : Key("cmd-v"),
@@ -138,7 +137,7 @@ keymap.update({
     'tilde': '~',
     'bang': '!',
     'doll': '$',
-    'downscore': '_',
+    'downer': '_',
     'semi': ';',
     'colon': ':',
     'lack': '[',
@@ -224,7 +223,6 @@ keymap.update({
     "asdf" : "asdf",
     "html" : "html" ,
     "bash profile" : "~/.bash_profile",
-    "(vim | fim)" : "vim",
     "zotero" : "zotero",
     "eye-term" : "iterm",
     "chrome" : "chrome",

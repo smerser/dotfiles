@@ -9,6 +9,9 @@ alpha = {}
 alpha.update(dict(alnum))
 alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
+# for bash.py
+lower_upper_digits = alpha
+
 alpha.update({'corey %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
 alpha.update({'commy %s' % k: Key('cmd-%s' % v) for k, v in alnum})
 alpha.update({'commy ship %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
@@ -119,7 +122,7 @@ keymap.update({
     'zoom in' : Key('cmd-='),
     'zoom out' : Key('cmd+-'),
 
-    "coffee" : Key("cmd-c"),
+    "copy" : Key("cmd-c"),
     "paste" : Key("cmd-v"),
 
     'chuck': Key('backspace'),
@@ -143,7 +146,7 @@ keymap.update({
     'lack': '[',
     'brack': ']',
     'larry': '(',
-    'perry': ')',
+    'party': ')',
     'lace': '{',
     'brace': '}',
     'langle': '<',
@@ -155,9 +158,9 @@ keymap.update({
     'ash': '@',
     'amper': '&',
     'pipe': '|',
-    'dubquote': '"',
+    'quote': '"',
     'tick': '`',
-    'quote': "'",
+    'sote': "'",
     'dock': '.',
     'conner': ',',
     'space': ' ',
@@ -173,7 +176,7 @@ keymap.update({
     'lackert': ' [ ',
     'brackert': ' ] ',
     'larryert': ' ( ',
-    'perryert': ' ) ',
+    'partiert': ' ) ',
     'lacert': ' { ',
     'bracert': ' } ',
     'langlert': ' < ',
@@ -196,23 +199,24 @@ keymap.update({
 
     'spamma': ', ',
     'hasha': '# ',
-    'call' : Key("()"),
-    'empty list': '[]',
+    'call' : "()",
+    'empty square': '[]',
     'empty dish': '{}',
+    'empty dime': '<>',
 
     'trip tap': Key("tab tab tab"),
     'trip quote': "'''",
     'trip backtick': "```",
 
     'slump': ['""', Key("left")],
-    'args': Key("() left"),
-    'square' : Key("[] left"),
-    'dish': Key('{} left'),
+    'oval': ['()', Key("left")],
+    'square' : ['[]', Key("left")],
+    'dish': ['{}', Key('left')],
+    'dime': ['<>', Key('left')],
 
     'next window': Key('cmd-`'),
     'last window': Key('cmd-shift-`'),
-    'next app': Key('cmd-tab'),
-    'last app': Key('cmd-shift-tab'),
+    'last': Key('cmd-tab'),
     'spotlight' : Key('cmd-space'),
 
     # a bunch of common names that i use

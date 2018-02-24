@@ -26,9 +26,7 @@ def delayed_click(m, button=0, times=1, down=None, up=None):
     eye.config.control_mouse = False
     x, y = click_pos(m)
     ctrl.mouse(x, y)
-    for i in range(times):
-        time.sleep(0.016)
-        ctrl.mouse_click(x, y, button=button, times=i+1, down=down, up=up)
+    ctrl.mouse_click(x, y, button=button, down=down, up=up, times=times, wait=16000)
     time.sleep(0.032)
     eye.config.control_mouse = old
 
@@ -54,12 +52,11 @@ keymap = {
     'trick': delayed_tripclick,
     'press': delayed_mouse_drag,
     'lease': delayed_mouse_release,
+    'cheese': [delayed_mouse_release, Key("backspace")],
 
     # combinations of mouse and keypresses
     "drickop" : [delayed_dubclick, Key("cmd-c")],
     "trickop" : [delayed_tripclick, Key("cmd-c")],
-    "passit" : [delayed_dubclick, Key("cmd-v")],
-    "cd here" : [delayed_dubclick, "cd ", Key("cmd-v"), "; ls", Key("enter")],
 
     'screencop' : [Key('cmd-shift-ctrl-4'), delayed_mouse_drag],
     'screenshot' : [Key('cmd-shift-4'), delayed_mouse_drag],
@@ -67,8 +64,8 @@ keymap = {
 }
 ctx.keymap(keymap)
 
-def unload():
-    global mouse_history
-    ctx.unload()
-    tap.unregister(tap.MMOVE, on_move)
-    mouse_history = []
+#def unload():
+#    global mouse_history
+#    ctx.unload()
+#    tap.unregister(tap.MMOVE, on_move)
+#    mouse_history = []

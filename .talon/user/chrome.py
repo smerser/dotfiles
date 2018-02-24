@@ -27,8 +27,8 @@ chromemap.update({
 chromemap.update({
     'more' : 'd',
     'less' : 'u',
-    'ellie' : Key('alt-up'),
-    'fader' : Key('alt-down'),
+    'lesser' : Key('alt-up'),
+    'mortar' : Key('alt-down'),
     'out' : [Key('tab')]*25,
     'dark mode' : Key('alt-shift-d'),
     'zoom in' : Key('cmd-='),

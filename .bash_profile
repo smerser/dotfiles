@@ -1,3 +1,4 @@
+# hello
 # welcome message
 cat ~/.bash_welcome
 
@@ -13,12 +14,13 @@ export desktop="/Users/evan/Desktop"
 export disco="/Users/evan/Software/stunning-disco"
 export DESMAN="/Users/evan/Software/DESMAN"
 export documents="/Users/evan/Documents"
+export dotfiles="/Users/evan/Software/dotfiles"
 export illumina="/Users/evan/Software/illumina-utils"
 export meren="/Users/evan/Academics/Research/Meren"
+export popvar="/Users/evan/Software/popvar"
 export shop="/Users/evan/Documents/Personal/Recipes/IngredientShopping"
 export software="/Users/evan/Software"
 export saav="/Users/evan/Software/SAAV-structural-mapping"
-export aenea="/Users/evan/Software/aenea"
 export table2md="csvtomd"
 export talon="/Applications/Talon.app/Contents/Resources/pypy/site-packages/talon"
 export talonscripts="/Users/evan/.talon/user"

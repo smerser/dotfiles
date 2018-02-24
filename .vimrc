@@ -7,7 +7,7 @@ endif
 let $BASH_ENV = "~/.bash_aliases"
 " every time a different buffer is loaded, the terminal's window name is changed from
 " `vim` to `<file_name_of_buffer> (vim)`
-autocmd BufEnter * execute "silent !title " . expand("%:t")
+autocmd BufEnter * execute "silent !title vim " . expand("%:t")
 
 " fuzzy search with ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -27,6 +27,7 @@ set mouse=v
 
 " my leader is space:
 let mapleader = "\<Space>"
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :e
@@ -48,7 +49,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Global clipboard copy
-vnoremap <C-y> "*y
+vnoremap <c-y> '*y
 
 " ' is so much easier to type than ` for markers, that I switch them here
 nnoremap ' `
@@ -133,8 +134,9 @@ let g:tagbar_show_linenumbers = 1
 
 map <leader>t :TagbarToggle<CR>
 map <leader>o :NERDTree<CR>
-map <leader>mm :set mouse=a<CR>
 map <leader>me :set mouse=v<CR>
+map <leader>mm :set mouse=a<CR>
+set mouse=a
 hi SpellBad cterm=underline 
 "ctermbg=red ctermfg=black
 let g:tagbar_left = 1

@@ -1,4 +1,6 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
+from .mouse import delayed_click
+import time
 ctx = Context('vim', bundle='com.googlecode.iterm2', func=lambda app, win: 'vim' in win.title)
 
 vimmap = {}
@@ -13,21 +15,21 @@ vimmap.update({'%d ruff' % k: [Key('escape shift-left')]*k for k in range(1, 10)
 # share this with bash.py
 common_to_bash = {
     # within line search
-    "gif"                   : Key("F"),
-    "til"                   : Key("t"),
-    "lit"                   : Key("T"),
-    "bane"                  : Key("ge"),
-    "ship bane"             : Key("gE"),
+    "gif"       : "F",
+    "til"       : "t",
+    "lit"       : "T",
+    "bane"      : "ge",
+    "ship bane" : "gE",
 
-    "die line" : Key("dd"),
+    "die line"  : "dd",
 }
 
 cursor_movement = {
     # line search
-    'flexy'                 : Key('0'),
+    'flexy'                 : '0',
 
     # line movement
-    'fly'                   : Key('G'),
+    'fly'                   : 'G',
 
     # variations of slap
     'slapper' : Key('escape shift-a enter'),
@@ -51,76 +53,91 @@ window_handler = {
     'east'                  : Key('ctrl-l'),
     'west'                  : Key('ctrl-h'),
     'close (buff | buffer)' : Key('%s c' % LEADER),
-    'write it'              : Key('escape %s w' % LEADER),
-    'write it quit it'      : Key('escape %s w %s q' % (LEADER, LEADER)),
+    # sometimes saving doesn't work on barhal so small sleep command is added
+    'write it'              : [Key('escape'), lambda m: time.sleep(0.25), Key('%s w' % LEADER)],
+    'run it'                : [Key('escape'), lambda m: time.sleep(0.25), Key('%s w cmd-l up enter' % LEADER)],
+
     'quit it'               : Key('%s q' % LEADER),
-    'force quit split'      : Key(':q! enter'),
+    'force quit split'      : [':q!', Key('enter')],
 }
 
 plugins = {
     # tagbar, nerdtree
-   '(tack board | tag-bar)'               :  Key("escape %s t" % LEADER),
-   'nerd'               :  Key("escape %s o" % LEADER),
+   '(tack board | tag-bar)' :  [Key("escape %s" % LEADER), "t"],
+   'nerd'                   :  [Key("escape %s" % LEADER), "o"],
 
     # Tabularize
-    'tabularize'            :  Key(":Tab space /"),
+    'tabularize'            :  [":Tab", Key("space"), "/"],
 
     # jedi
     'show me'               :  Key('ctrl-space'),
     'soy'                   :  Key('ctrl-y'),
-    'go to'                 :  Key('%s d' % LEADER),
-    'jedi'                  :  Key('ctrl-j'),
-    'kitty'                 :  Key('ctrl-k'),
+    'go to'                 :  [Key('%s' % LEADER), "d"],
 
     # RltvNmbr
-    'relnumb'               :  Key(':RN enter'),
+    'relnumb'               :  [':RN', Key('enter')],
 }
 
 primitive_commands = {
-    'undo'                  :  Key('escape u'),
+    'undo'                  :  [Key('escape'), "u"],
     'redo'                  :  Key('escape ctrl-r'),
 
     'oozey' : Key("ctrl-o"),
 
-    'bar'         : Key('V'),
+    'bar'         : 'V',
     'block'       : Key('ctrl-v'),
 
     # SmartInner
-    'winner'      : Key('in'),
-    'wander'      : Key('an'),
-    'bender'      : Key('il'),
-    'banter'      : Key('al'),
+    'winner'      : 'in',
+    'wander'      : 'an',
+    'bender'      : 'il',
+    'banter'      : 'al',
 
-    'make upper' :  Key('gU'),
-    'make lower' :  Key('gu'),
-    'soldier'    :  Key('gq'),
+    'make upper' :  'gU',
+    'make lower' :  'gu',
+    'soldier'    :  'gq',
 
     # marker stuff
-    'privvy'       : Key("escape ''"),
-    'last change'  : Key("'."),
-    'belect'       : Key("'<"),
-    'alect'        : Key("'>"),
-    'retter'       : Key("'"),
+    'privvy'       : [Key("escape"), "''"],
+    'last change'  : "'.",
+    'belect'       : "'<",
+    'alect'        : "'>",
 
     'edit'         : Key('%s e space' % LEADER),
-    'source'       : Key(':so space'),
-    'settings'     : Key(':set space'),
+    'source'       : [":so", Key('space')],
+    'settings'     : [":set", Key('space')],
     'settings paste'     : [":set", Key("space"), "paste", Key("enter")],
     'settings no paste'     : [":set", Key("space"), "nopaste", Key("enter")],
 
     # search stuff
-    'cancel hits'  : Key("/asdf enter"),
-    'nex'          : Key("n"),
-    'bex'          : Key("N"),
+    'cancel hits' :  ["/asdf", Key("enter")],
+    'nex'         :  Key("n"),
+    'bex'         :  Key("N"),
+    'sore'        :  [":s///g"] + [Key("left")]*3,
+    'globsore'    :  [":%s///g"] + [Key("left")]*3,
 
-    'para' : Key("escape o enter"),
-
-    'run it' : Key("escape %s w cmd-l up enter" % LEADER),
+    'para' : [Key("escape"), "o", Key("enter")],
 
     }
 
+mouse_map = {
+    "psych whale" : [Key("escape"), "mt", delayed_click, "yiw'tpa"],
+    "psych ship whale" : [Key("escape"), "mt", delayed_click, "yiW'tpa"],
+    "psych sit larry" : [Key("escape"), "mt", delayed_click, "yi('tpa"],
+    "psych sit lack" : [Key("escape"), "mt", delayed_click, "yi['tpa"],
+    "psych sit lace" : [Key("escape"), "mt", delayed_click, "yi{'tpa"],
+    "psych sit langle" : [Key("escape"), "mt", delayed_click, "yi<'tpa"],
+    "psych sit sote" : [Key("escape"), "mt", delayed_click, "yi''tpa"],
+    "psych sit quote" : [Key("escape"), "mt", delayed_click, """yi"'tpa"""],
+    "psych air lack" : [Key("escape"), "mt", delayed_click, "ya['tpa"],
+    "psych air lace" : [Key("escape"), "mt", delayed_click, "ya{'tpa"],
+    "psych air langle" : [Key("escape"), "mt", delayed_click, "ya<'tpa"],
+    "psych air sote" : [Key("escape"), "mt", delayed_click, "ya''tpa"],
+    "psych air quote" : [Key("escape"), "mt", delayed_click, """ya"'tpa"""],
+}
+
 common_names = {
-    "dido" : Key("d$"),
+    "dido" : "d$",
     "leader" : Key("%s" % LEADER),
 }
 
@@ -131,7 +148,7 @@ vimmap.update(plugins)
 vimmap.update(viewport)
 vimmap.update(common_names)
 vimmap.update(common_to_bash)
-
+vimmap.update(mouse_map)
 
 ctx.keymap(vimmap)
 

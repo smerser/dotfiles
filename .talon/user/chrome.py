@@ -47,6 +47,3 @@ chromemap.update({
 
 ctx.keymap(chromemap)
 
-def unload():
-    ctx.disable()
-

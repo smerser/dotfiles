@@ -152,6 +152,3 @@ vimmap.update(mouse_map)
 
 ctx.keymap(vimmap)
 
-def unload():
-    ctx.disable()
-

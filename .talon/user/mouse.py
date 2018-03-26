@@ -52,7 +52,8 @@ keymap = {
     'trick': delayed_tripclick,
     'press': delayed_mouse_drag,
     'lease': delayed_mouse_release,
-    'cheese': [delayed_mouse_release, Key("backspace")],
+    'leach': [delayed_mouse_release, Key("backspace")],
+    'leakey': [delayed_mouse_release, Key("cmd-c")],
 
     # combinations of mouse and keypresses
     "drickop" : [delayed_dubclick, Key("cmd-c")],
@@ -63,9 +64,3 @@ keymap = {
 
 }
 ctx.keymap(keymap)
-
-#def unload():
-#    global mouse_history
-#    ctx.unload()
-#    tap.unregister(tap.MMOVE, on_move)
-#    mouse_history = []

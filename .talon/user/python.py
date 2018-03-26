@@ -66,7 +66,3 @@ pythonmap.update(pandasmap)
 
 
 ctx.keymap(pythonmap)
-
-def unload():
-    ctx.disable()
-

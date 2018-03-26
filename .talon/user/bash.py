@@ -14,13 +14,14 @@ bashmap = {}
 
 mouse_map = {
     "passit" : [delayed_dubclick, Key("cmd-v")],
+    "passirk" : [delayed_dubclick, Key("cmd-v enter")],
     "cd here" : [delayed_dubclick, "cd ", Key("cmd-v"), "; ls", Key("enter")],
     }
 
 binary_map = {
 
     "ssh"          :  "ssh ",
-    "ssh long"     :  "ssh -L 8091:localhost:8091 ",
+    "ssh long"     :  "ssh -L 8120:localhost:8120",
     'cd'           :  'cd ',
     "(vim | fim)"  :  "vim ",
     'remove'       :  'rm ',
@@ -29,6 +30,8 @@ binary_map = {
     "qstat"        :  "qstat ",
     "qdel"         :  "qdel ",
     "gzip"         :  "gzip ",
+    "untar"         :  "tar -zxvf ",
+    "tar"         :  "tar -zcvf ",
     "douche"       :  "du -sh ",
     'scp'          :  'scp ',
     'jupiter'      :  ['jupyter notebook', Key("enter")],
@@ -109,7 +112,4 @@ bashmap.update(directory_marking)
 bashmap.update(mouse_map)
 
 ctx.keymap(bashmap)
-
-def unload():
-    ctx.disable()
 

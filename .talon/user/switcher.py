@@ -39,6 +39,3 @@ def ui_event(event, arg):
 ui.register('', ui_event)
 update_lists()
 
-def unload():
-    ctx.unload()
-    ui.unregister('', update_lists)

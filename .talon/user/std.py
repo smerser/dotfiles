@@ -62,7 +62,7 @@ formatters = {
     'smash':        (True,  lambda i, word, _: word),
     'proper':       (True, lambda i, word, _: word.capitalize()),
     'title':        (False, lambda i, word, _: word.capitalize()),
-    'allcaps':      (False, lambda i, word, _: word.upper()),
+    'yell':      (False, lambda i, word, _: word.upper()),
     'string':       (False, surround('"')),
     'soul string':  (False, surround("'")),
     'padded':       (False, surround(" ")),
@@ -97,13 +97,10 @@ ctx = Context('input')
 keymap = {}
 
 # hacky ways for repeat commands that take numbers as variables
-keymap.update({'%d work' % k: [Key('alt-backspace')]*k for k in range(1, 10)})
-keymap.update({'%d chuck' % k: [Key('backspace')]*k for k in range(1, 10)})
-keymap.update({'%d left' % k: [Key('left')]*k for k in range(1, 10)})
-keymap.update({'%d right' % k: [Key('right')]*k for k in range(1, 10)})
-keymap.update({'%d box' % k: ['x']*k for k in range(1, 10)})
-keymap.update({'%d undo' % k: ['u']*k for k in range(1, 10)})
-keymap.update({'%d redo' % k: [Key('ctrl-r')]*k for k in range(1, 10)})
+keymap.update({'%d work' % k: [Key('alt-backspace')]*k for k in range(2, 10)})
+keymap.update({'%d chuck' % k: [Key('backspace')]*k for k in range(2, 10)})
+keymap.update({'%d left' % k: [Key('left')]*k for k in range(2, 10)})
+keymap.update({'%d right' % k: [Key('right')]*k for k in range(2, 10)})
 
 keymap.update(alpha)
 keymap.update({
@@ -209,7 +206,7 @@ keymap.update({
     'trip backtick': "```",
 
     'slump': ['""', Key("left")],
-    'oval': ['()', Key("left")],
+    'orc': ['()', Key("left")],
     'square' : ['[]', Key("left")],
     'dish': ['{}', Key('left')],
     'dime': ['<>', Key('left')],

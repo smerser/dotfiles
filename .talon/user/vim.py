@@ -11,6 +11,9 @@ LEADER = 'space'
 # this doesn't work with buff 
 vimmap.update({'%d buff' % k: [Key('escape shift-right')]*k for k in range(1, 10)})
 vimmap.update({'%d ruff' % k: [Key('escape shift-left')]*k for k in range(1, 10)})
+vimmap.update({'%d box' % k: ['x']*k for k in range(2, 10)})
+vimmap.update({'%d undo' % k: ['u']*k for k in range(2, 10)})
+vimmap.update({'%d redo' % k: [Key('ctrl-r')]*k for k in range(2, 10)})
 
 # share this with bash.py
 common_to_bash = {
@@ -121,19 +124,35 @@ primitive_commands = {
     }
 
 mouse_map = {
-    "psych whale" : [Key("escape"), "mt", delayed_click, "yiw'tpa"],
+    "psych whale"      : [Key("escape"), "mt", delayed_click, "yiw'tpa"],
     "psych ship whale" : [Key("escape"), "mt", delayed_click, "yiW'tpa"],
-    "psych sit larry" : [Key("escape"), "mt", delayed_click, "yi('tpa"],
-    "psych sit lack" : [Key("escape"), "mt", delayed_click, "yi['tpa"],
-    "psych sit lace" : [Key("escape"), "mt", delayed_click, "yi{'tpa"],
+    "psych doll"       : [Key("escape"), "mt", delayed_click, "y$'tpa"],
+    "psych sit larry"  : [Key("escape"), "mt", delayed_click, "yi('tpa"],
+    "psych sit lack"   : [Key("escape"), "mt", delayed_click, "yi['tpa"],
+    "psych sit lace"   : [Key("escape"), "mt", delayed_click, "yi{'tpa"],
     "psych sit langle" : [Key("escape"), "mt", delayed_click, "yi<'tpa"],
-    "psych sit sote" : [Key("escape"), "mt", delayed_click, "yi''tpa"],
-    "psych sit quote" : [Key("escape"), "mt", delayed_click, """yi"'tpa"""],
-    "psych air lack" : [Key("escape"), "mt", delayed_click, "ya['tpa"],
-    "psych air lace" : [Key("escape"), "mt", delayed_click, "ya{'tpa"],
+    "psych sit sote"   : [Key("escape"), "mt", delayed_click, "yi''tpa"],
+    "psych sit quote"  : [Key("escape"), "mt", delayed_click, """yi"'tpa"""],
+    "psych air lack"   : [Key("escape"), "mt", delayed_click, "ya['tpa"],
+    "psych air lace"   : [Key("escape"), "mt", delayed_click, "ya{'tpa"],
     "psych air langle" : [Key("escape"), "mt", delayed_click, "ya<'tpa"],
-    "psych air sote" : [Key("escape"), "mt", delayed_click, "ya''tpa"],
-    "psych air quote" : [Key("escape"), "mt", delayed_click, """ya"'tpa"""],
+    "psych air sote"   : [Key("escape"), "mt", delayed_click, "ya''tpa"],
+    "psych air quote"  : [Key("escape"), "mt", delayed_click, """ya"'tpa"""],
+
+    "steal whale"      : [Key("escape"), "mt", delayed_click, "yiw't"],
+    "steal ship whale" : [Key("escape"), "mt", delayed_click, "yiW't"],
+    "steal doll"       : [Key("escape"), "mt", delayed_click, "y$'t"],
+    "steal sit larry"  : [Key("escape"), "mt", delayed_click, "yi('t"],
+    "steal sit lack"   : [Key("escape"), "mt", delayed_click, "yi['t"],
+    "steal sit lace"   : [Key("escape"), "mt", delayed_click, "yi{'t"],
+    "steal sit langle" : [Key("escape"), "mt", delayed_click, "yi<'t"],
+    "steal sit sote"   : [Key("escape"), "mt", delayed_click, "yi''t"],
+    "steal sit quote"  : [Key("escape"), "mt", delayed_click, """yi"'t"""],
+    "steal air lack"   : [Key("escape"), "mt", delayed_click, "ya['t"],
+    "steal air lace"   : [Key("escape"), "mt", delayed_click, "ya{'t"],
+    "steal air langle" : [Key("escape"), "mt", delayed_click, "ya<'t"],
+    "steal air sote"   : [Key("escape"), "mt", delayed_click, "ya''t"],
+    "steal air quote"  : [Key("escape"), "mt", delayed_click, """ya"'t"""],
 }
 
 common_names = {

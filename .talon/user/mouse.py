@@ -1,4 +1,5 @@
-import eye
+#import eye
+from user import eye2 as eye
 import time
 from talon import ctrl, tap
 from talon.voice import Context, Key
@@ -8,7 +9,7 @@ x, y = ctrl.mouse_pos()
 mouse_history = [(x, y, time.time())]
 force_move = None
 
-def on_move(_, e):
+def on_move(typ, e):
     mouse_history.append((e.x, e.y, time.time()))
     if force_move:
         e.x, e.y = force_move
@@ -42,8 +43,20 @@ def delayed_tripclick(m):
 def delayed_mouse_drag(m):
     delayed_click(m, button=0, times=1, down=True)
 
+def delayed_dubmouse_drag(m):
+    delayed_click(m, button=0)
+    delayed_click(m, button=0, times=1, down=True)
+
 def delayed_mouse_release(m):
     delayed_click(m, button=0, times=1, up=True)
+
+def mouse_drag(m):
+    x, y = click_pos(m)
+    ctrl.mouse_click(x, y, down=True)
+
+def mouse_release(m):
+    x, y = click_pos(m)
+    ctrl.mouse_click(x, y, up=True)
 
 keymap = {
     'righty': delayed_right_click,
@@ -51,11 +64,12 @@ keymap = {
     'drip': delayed_dubclick,
     'trick': delayed_tripclick,
     'press': delayed_mouse_drag,
+    'dress': delayed_dubmouse_drag,
     'lease': delayed_mouse_release,
     'leach': [delayed_mouse_release, Key("backspace")],
-    'leakey': [delayed_mouse_release, Key("cmd-c")],
+    'lickop': [delayed_mouse_release, Key("cmd-c")],
 
-    # combinations of mouse and keypresses
+    # combinations  f mouse and keypresses
     "drickop" : [delayed_dubclick, Key("cmd-c")],
     "trickop" : [delayed_tripclick, Key("cmd-c")],
 
@@ -63,4 +77,5 @@ keymap = {
     'screenshot' : [Key('cmd-shift-4'), delayed_mouse_drag],
 
 }
+
 ctx.keymap(keymap)

@@ -7,10 +7,15 @@ alias mbl="ssh ekiefl@evol5.mbl.edu"
 alias midway1="ssh ekiefl@midway-login1.rcc.uchicago.edu"
 alias midway2="ssh ekiefl@midway-login2.rcc.uchicago.edu"
 alias pymol="/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL"
-alias vim="vi"
 alias run_dragon="/Applications/Talon.app/Contents/Resources/run_dragon"
 alias desman2="source ~/virtual-envs/desman/bin/activate" # DESMAN 2 (is a virtual env)
 alias desman3="source ~/virtual-envs/desman3/bin/activate" # DESMAN 3 (is a virtual env)
+alias barhali="ssh -L 8120:localhost:8120 -L 8121:localhost:8121 -L 8122:localhost:8122 -L 8123:localhost:8123 barhal | tee /dev/tty | python3 ~/.ssh/run_webbrowser.py"
+
+# overwrites
+alias readlink="greadlink"
+alias p="python"
+alias vim="vi"
 
 alias ..="cd .."
 alias ...="cd ../.."

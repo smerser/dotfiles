@@ -48,15 +48,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Global clipboard copy
+" Global clipboard copy FIXME not working
 vnoremap <c-y> '*y
 
 " ' is so much easier to type than ` for markers, that I switch them here
 nnoremap ' `
 nnoremap ` '
-
-:noremap <leader>fif ifor <c-o>mu in <c-o>mi:<esc>`u
-:noremap <leader>imp ifrom <c-o>mu import <c-o>mi<esc>`u
 
 " >> indents in command mode. >M idents to level defined by line above
 " command not written yet
@@ -156,13 +153,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{fugitive#statusline()}
 
-" no automatic word wrap, but `gq` wraps to 100
+" no automatic word wrap, but `gq` wraps to textwidth
 :set textwidth=100
 :set fo-=t
 
-" moving the text from one line up or down
-"no <up> ddkP
-"no <down> ddp
 " making space above or below curor's line
 :nnoremap <C-u> :call ReturnToOriginalPosition("o")<CR>
 :nnoremap <C-i> :call ReturnToOriginalPosition("O")<CR>
@@ -184,7 +178,7 @@ set statusline+=%{fugitive#statusline()}
 :set ttyfast
 :set lazyredraw
 
-" if these are uncommented left and right switch buffer in normal mode (otherwise it's shift arrowkey)
+" if these are uncommented shift-left and shift-right switch buffer in normal mode
 :map <s-left> :bp!<CR>
 :map <s-right> :bn!<CR>
 
@@ -197,9 +191,11 @@ set statusline+=%{fugitive#statusline()}
 inoremap <expr> <C-j>     pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>     pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" relative numbering (:RltvNmbr enables/disables) `call RltvNmbr#RltvNmbrCtrl(1)` was added to ~/.vim/plugin/RltvNmbr.vim
-hi HL_RltvNmbr_Minus    gui=none,italic ctermfg=172   ctermbg=black guifg=yellow   guibg=black
-hi HL_RltvNmbr_Positive gui=none,italic ctermfg=172   ctermbg=black guifg=yellow guibg=black
+" legacy comment, laggy plugin for relative + absolute numbering was called RltvNmbr
+
+" hybrid line numbering
+:set number relativenumber
+:highlight LineNr ctermfg=174
 
 " snakemake syntax highlighting
 au BufNewFile,BufRead Snakefile set syntax=snakemake

@@ -73,13 +73,16 @@ plugins = {
     'tabularize'            :  [":Tab", Key("space"), "/"],
 
     # jedi
-    'show me'               :  Key('ctrl-space'),
+    'show me'               :  lambda m: press('ctrl-space', wait=16000),
     'soy'                   :  Key('ctrl-y'),
     'go to'                 :  [Key('%s' % LEADER), "d"],
 
     # RltvNmbr
     'relnumb'               :  [':RN', Key('enter')],
 }
+
+plugins.update({'%d jedi' % k: [Key('ctrl-j')]*k for k in range(2, 10)})
+plugins.update({'%d kitty' % k: [Key('ctrl-k')]*k for k in range(2, 10)})
 
 primitive_commands = {
     'undo'                  :  [Key('escape'), "u"],
@@ -123,36 +126,42 @@ primitive_commands = {
 
     }
 
-mouse_map = {
-    "psych whale"      : [Key("escape"), "mt", delayed_click, "yiw'tpa"],
-    "psych ship whale" : [Key("escape"), "mt", delayed_click, "yiW'tpa"],
-    "psych doll"       : [Key("escape"), "mt", delayed_click, "y$'tpa"],
-    "psych sit larry"  : [Key("escape"), "mt", delayed_click, "yi('tpa"],
-    "psych sit lack"   : [Key("escape"), "mt", delayed_click, "yi['tpa"],
-    "psych sit lace"   : [Key("escape"), "mt", delayed_click, "yi{'tpa"],
-    "psych sit langle" : [Key("escape"), "mt", delayed_click, "yi<'tpa"],
-    "psych sit sote"   : [Key("escape"), "mt", delayed_click, "yi''tpa"],
-    "psych sit quote"  : [Key("escape"), "mt", delayed_click, """yi"'tpa"""],
-    "psych air lack"   : [Key("escape"), "mt", delayed_click, "ya['tpa"],
-    "psych air lace"   : [Key("escape"), "mt", delayed_click, "ya{'tpa"],
-    "psych air langle" : [Key("escape"), "mt", delayed_click, "ya<'tpa"],
-    "psych air sote"   : [Key("escape"), "mt", delayed_click, "ya''tpa"],
-    "psych air quote"  : [Key("escape"), "mt", delayed_click, """ya"'tpa"""],
 
-    "steal whale"      : [Key("escape"), "mt", delayed_click, "yiw't"],
-    "steal ship whale" : [Key("escape"), "mt", delayed_click, "yiW't"],
-    "steal doll"       : [Key("escape"), "mt", delayed_click, "y$'t"],
-    "steal sit larry"  : [Key("escape"), "mt", delayed_click, "yi('t"],
-    "steal sit lack"   : [Key("escape"), "mt", delayed_click, "yi['t"],
-    "steal sit lace"   : [Key("escape"), "mt", delayed_click, "yi{'t"],
-    "steal sit langle" : [Key("escape"), "mt", delayed_click, "yi<'t"],
-    "steal sit sote"   : [Key("escape"), "mt", delayed_click, "yi''t"],
-    "steal sit quote"  : [Key("escape"), "mt", delayed_click, """yi"'t"""],
-    "steal air lack"   : [Key("escape"), "mt", delayed_click, "ya['t"],
-    "steal air lace"   : [Key("escape"), "mt", delayed_click, "ya{'t"],
-    "steal air langle" : [Key("escape"), "mt", delayed_click, "ya<'t"],
-    "steal air sote"   : [Key("escape"), "mt", delayed_click, "ya''t"],
-    "steal air quote"  : [Key("escape"), "mt", delayed_click, """ya"'t"""],
+# "a", Key("backspace") used to maintain column position when escaping immediately after `o` or `O`
+mouse_map = {
+    "psych whale"      : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiw'tpa"],
+    "psych ship whale" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiW'tpa"],
+    "psych each"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ye'tpa"],
+    "psych ship each"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yE'tpa"],
+    "psych doll"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "y$'tpa"],
+    "psych sit larry"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi('tpa"],
+    "psych sit lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi['tpa"],
+    "psych sit lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi{'tpa"],
+    "psych sit langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi<'tpa"],
+    "psych sit sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi''tpa"],
+    "psych sit quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """yi"'tpa"""],
+    "psych air lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya['tpa"],
+    "psych air lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya{'tpa"],
+    "psych air langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya<'tpa"],
+    "psych air sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya''tpa"],
+    "psych air quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """ya"'tpa"""],
+
+    "steal whale"      : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiw't"],
+    "steal ship whale" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiW't"],
+    "steal each"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ye't"],
+    "steal ship each"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yE't"],
+    "steal doll"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "y$'t"],
+    "steal sit larry"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi('t"],
+    "steal sit lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi['t"],
+    "steal sit lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi{'t"],
+    "steal sit langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi<'t"],
+    "steal sit sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi''t"],
+    "steal sit quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """yi"'t"""],
+    "steal air lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya['t"],
+    "steal air lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya{'t"],
+    "steal air langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya<'t"],
+    "steal air sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya''t"],
+    "steal air quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """ya"'t"""],
 }
 
 common_names = {

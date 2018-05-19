@@ -39,6 +39,7 @@ function bd(){
 export CDPATH=.:~ # cd to directories other than cwd without rel path
 export academics="/Users/evan/Academics"
 export anvio="/Users/evan/Software/anvio"
+export codebase="/Users/evan/Software/anvio/anvio"
 export desktop="/Users/evan/Desktop"
 export disco="/Users/evan/Software/stunning-disco"
 export DESMAN="/Users/evan/Software/DESMAN"
@@ -88,8 +89,12 @@ eval "$(pyenv init -)"
 export CENTRIFUGE_BASE="/Users/evan/Software/CENTRIFUGE"
 export PATH=$PATH:$CENTRIFUGE_BASE/centrifuge
 
+# empty talon.log
+rm ~/.talon/talon.log
+touch ~/.talon/talon.log
+
 # copies dotfolder contents into $software/dotfiles. If you get permission denied spam, change
-# permission settings here. I copy some dotfiles as well incase some of the symlinks are broken
+# permission settings here. I copy dotfiles here too
 rm -rf $software/dotfiles/.ipython && mkdir -p $software/dotfiles/.ipython && cp -r ~/.ipython/* $software/dotfiles/.ipython
 rm -rf $software/dotfiles/.vim && mkdir -p $software/dotfiles/.vim && cp -r ~/.vim/* $software/dotfiles/.vim
 rm -rf $software/dotfiles/.jupyter && mkdir -p $software/dotfiles/.jupyter && cp -r ~/.jupyter/* $software/dotfiles/.jupyter

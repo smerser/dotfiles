@@ -21,13 +21,15 @@ mouse_map = {
 binary_map = {
 
     "ssh"          : "ssh ",
-    "barhally"     : "barhali",
+    "barhally"     : ["barhali", Key("enter")],
     'cd'           : 'cd ',
     "(vim | fim)"  : "vim ",
     'remove'       : 'rm ',
     'cat'          : 'cat ',
     'ls'           : 'ls ',
-    "qstat"        : "qstat ",
+    "qstat"        : ['qstat', Key("enter")],
+    "qstat me"     : ['qstat -u ekiefl', Key("enter")],
+    "screen"         : "screen ",
     "qdel"         : "qdel ",
     "gzip"         : "gzip ",
     "untar"        : "tar -zxvf ",
@@ -48,16 +50,19 @@ binary_map = {
     'cluster rise' : 'clusterize -n ',
     'head'         : 'head -n ',
     'tail'         : 'tail -n ',
+    'talon log'    : ['tail -f ~/.talon/talon.log', Key("enter")],
     'tailff'       : 'tail -f ',
     'column'       : 'column -t ',
     'bartsch'      : 'bash ',
+    'fg'      : ['fg', Key("enter")],
+    'ground'      : [Key("ctrl-z")],
 }
 
 git_map = {
 
     'run get'                :  'git ',
     'run get clone'          :  'git clone ',
-   'run get diff'            :  'git diff ',
+    'run get diff'            :  'git diff ',
     'run get branch'         :  'git branch ',
     'run get commit'         :  ['git commit -m ""', Key("left")],
     'run get push'           :  'git push ',
@@ -82,6 +87,7 @@ names_map = {
     # convenience variables
     'snap academics'     : ["$academics/", Key("tab tab tab")],
     'snap anvio'         : ["$anvio/", Key("tab tab tab")],
+    'snap codebase'      : ["$codebase/", Key("tab tab tab")],
     'snap desktop'       : ["$desktop/", Key("tab tab tab")],
     'snap disco'         : ["$disco/", Key("tab tab tab")],
     'snap DESMAN'        : ["$DESMAN/", Key("tab tab tab")],

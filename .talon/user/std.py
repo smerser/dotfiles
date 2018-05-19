@@ -121,11 +121,12 @@ keymap.update({
 
     "copy" : Key("cmd-c"),
     "paste" : Key("cmd-v"),
+    "patirk" : [Key("cmd-v"), Key("enter")],
 
     'chuck': Key('backspace'),
     'work' : Key('alt-backspace'),
 
-    'slap': Key('enter'),
+    'slaw': Key('enter'),
     'slapper': [Key('cmd-right enter')],
     'skate': Key('esc'),
 
@@ -232,7 +233,8 @@ keymap.update({
     'anvio' : 'anvio',
     'anvi' : 'anvi-',
     "utils" : "utils",
-    "ee keyfull" : "ekiefl",
+    "keyfull" : "kiefl",
+    "my e-mail" : "kiefl.evan@gmail.com",
 
 })
 

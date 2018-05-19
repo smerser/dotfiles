@@ -24,6 +24,7 @@ alias .....="cd ../../../.."
 
 # abbreviations
 alias tlf="tail -f"
+alias tlog="tail -f ~/.talon/talon.log"
 alias rmrf="rm -rf"
 alias tarp="tar -zcvf"
 alias untarp="tar -zxvf"
@@ -35,8 +36,10 @@ alias h="head -n"
 alias t="tail -n"
 alias col="column -t"
 alias eb="vim ~/.bash_profile"
+alias ea="vim ~/.bash_aliases"
 alias ev="vim ~/.vimrc"
 alias sb="source ~/.bash_profile"
+alias hs="history | awk '{$1=""; print substr($0,2)}'"
 
 # changes title of the window from `old` to `new (old)` via `title new`
 function title {

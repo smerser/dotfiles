@@ -19,17 +19,17 @@ mouse_map = {
     }
 
 binary_map = {
-
     "ssh"          : "ssh ",
     "barhally"     : ["barhali", Key("enter")],
     'cd'           : 'cd ',
     "(vim | fim)"  : "vim ",
     'remove'       : 'rm ',
+    'grep'         : 'grep ',
     'cat'          : 'cat ',
     'ls'           : 'ls ',
     "qstat"        : ['qstat', Key("enter")],
     "qstat me"     : ['qstat -u ekiefl', Key("enter")],
-    "screen"         : "screen ",
+    "screen"       : "screen ",
     "qdel"         : "qdel ",
     "gzip"         : "gzip ",
     "untar"        : "tar -zxvf ",
@@ -54,8 +54,8 @@ binary_map = {
     'tailff'       : 'tail -f ',
     'column'       : 'column -t ',
     'bartsch'      : 'bash ',
-    'fg'      : ['fg', Key("enter")],
-    'ground'      : [Key("ctrl-z")],
+    'fg'           : ['fg', Key("enter")],
+    'ground'       : [Key("ctrl-z")],
 }
 
 git_map = {

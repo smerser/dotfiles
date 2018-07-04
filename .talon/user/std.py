@@ -1,4 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
+import copy
 from talon import ctrl
 import string
 
@@ -10,7 +11,43 @@ alpha.update(dict(alnum))
 alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 # for bash.py
-lower_upper_digits = alpha
+lower_upper_digits = copy.deepcopy(alpha)
+
+punctuation = {
+    'question': '?',
+    'eek': '=',
+    'dash': '-',
+    'plus': '+',
+    'tilde': '~',
+    'bang': '!',
+    'doll': '$',
+    'downer': '_',
+    'semi': ';',
+    'colon': ':',
+    'lack': '[',
+    'brack': ']',
+    'larry': '(',
+    'party': ')',
+    'lace': '{',
+    'brace': '}',
+    'langle': '<',
+    'rangle': '>',
+    'star': '*',
+    'hash': '#',
+    'mod': '%',
+    'flex': '^',
+    'ash': '@',
+    'amper': '&',
+    'pipe': '|',
+    'quote': '"',
+    'tick': '`',
+    'sote': "'",
+    'dock': '.',
+    'conner': ',',
+    'space': ' ',
+    'slash': '/',
+    'backslash': '\\',
+}
 
 alpha.update({'corey %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
 alpha.update({'commy %s' % k: Key('cmd-%s' % v) for k, v in alnum})
@@ -53,16 +90,23 @@ def rot13(i, word, _):
         out += c
     return out
 
+def vak(i, word, _):
+    if i == 0:
+        return ' --'+word
+    else:
+        return '-'+word
+
 formatters = {
     'dunder':       (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
     'camel':        (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'snake':        (True,  lambda i, word, _: word if i == 0 else '_'+word),
-    'kebab':        (True,  lambda i, word, _: word if i == 0 else '-'+word),
+    'dashword':     (True,  lambda i, word, _: word if i == 0 else '-'+word),
+    'vak':          (True, vak),
     'dotword':      (True,  lambda i, word, _: word if i == 0 else '.'+word),
     'smash':        (True,  lambda i, word, _: word),
     'proper':       (True, lambda i, word, _: word.capitalize()),
     'title':        (False, lambda i, word, _: word.capitalize()),
-    'yell':      (False, lambda i, word, _: word.upper()),
+    'yell':         (False, lambda i, word, _: word.upper()),
     'string':       (False, surround('"')),
     'soul string':  (False, surround("'")),
     'padded':       (False, surround(" ")),
@@ -76,11 +120,15 @@ def FormatText(m):
             fmt.append(w.word)
     words = [str(s).lower() for s in m.dgndictation[0]._words]
 
+    space_at_end = False
+
     tmp = []
     spaces = True
     for i, word in enumerate(words):
         word = parse_word(word)
         for name in reversed(fmt):
+            if name == 'vak':
+                space_at_end = True
             smash, func = formatters[name]
             word = func(i, word, i == len(words)-1)
             spaces = spaces and not smash
@@ -90,7 +138,9 @@ def FormatText(m):
     sep = ' '
     if not spaces:
         sep = ''
-    Str(sep.join(words))(None)
+    string = sep.join(words)
+    string += ' ' if space_at_end else ''
+    Str(string)(None)
 
 ctx = Context('input')
 
@@ -103,6 +153,9 @@ keymap.update({'%d left' % k: [Key('left')]*k for k in range(2, 10)})
 keymap.update({'%d right' % k: [Key('right')]*k for k in range(2, 10)})
 
 keymap.update(alpha)
+keymap.update(punctuation)
+
+
 keymap.update({
     'say <dgndictation> [over]': text,
     'word <dgnwords>': word,
@@ -130,41 +183,6 @@ keymap.update({
     'slapper': [Key('cmd-right enter')],
     'skate': Key('esc'),
 
-    # individual characters
-    'question': '?',
-    'eek': '=',
-    'dash': '-',
-    'plus': '+',
-    'tilde': '~',
-    'bang': '!',
-    'doll': '$',
-    'downer': '_',
-    'semi': ';',
-    'colon': ':',
-    'lack': '[',
-    'brack': ']',
-    'larry': '(',
-    'party': ')',
-    'lace': '{',
-    'brace': '}',
-    'langle': '<',
-    'rangle': '>',
-    'star': '*',
-    'hash': '#',
-    'mod': '%',
-    'flex': '^',
-    'ash': '@',
-    'amper': '&',
-    'pipe': '|',
-    'quote': '"',
-    'tick': '`',
-    'sote': "'",
-    'dock': '.',
-    'conner': ',',
-    'space': ' ',
-    'slash': '/',
-    'backslash': '\\',
-
     # padded characters
     'eekert': ' = ',
     'dashert': ' - ',
@@ -190,10 +208,10 @@ keymap.update({
     'slashert': ' / ',
     'backslash': '\\',
 
-    'deek' : Key('=='), # double eek
-    'sneak' : Key('!='), # 'snot double eek
-    'deekert' : Key(' == '),
-    'sneakert' : Key(' != '),
+    'deek' : '==', # double eek
+    'sneak' : '!=', # 'snot double eek
+    'deekert' : ' == ',
+    'sneakert' : ' != ',
 
     'spamma': ', ',
     'hasha': '# ',

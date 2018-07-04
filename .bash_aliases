@@ -36,9 +36,10 @@ alias h="head -n"
 alias t="tail -n"
 alias col="column -t"
 alias eb="vim ~/.bash_profile"
+alias et="vim /Users/evan/.talon/user/*"
 alias ea="vim ~/.bash_aliases"
-alias ev="vim ~/.vimrc"
 alias sb="source ~/.bash_profile"
+alias ev="vim ~/.vimrc"
 alias hs="history | awk '{$1=""; print substr($0,2)}'"
 
 # changes title of the window from `old` to `new (old)` via `title new`

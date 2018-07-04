@@ -29,6 +29,7 @@ set mouse=v
 let mapleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>fq :q!<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :e
 " disable (for muscle memory)

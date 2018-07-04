@@ -1,5 +1,7 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 from .mouse import delayed_click
+from .std import punctuation
+from .std import lower_upper_digits
 import time
 ctx = Context('vim', bundle='com.googlecode.iterm2', func=lambda app, win: 'vim' in win.title)
 
@@ -60,8 +62,8 @@ window_handler = {
     'write it'              : [Key('escape'), lambda m: time.sleep(0.25), Key('%s w' % LEADER)],
     'run it'                : [Key('escape'), lambda m: time.sleep(0.25), Key('%s w cmd-l up enter' % LEADER)],
 
-    'quit it'               : Key('%s q' % LEADER),
-    'force quit split'      : [':q!', Key('enter')],
+    'quit it'               : [Key('%s ' % LEADER), "q"],
+    'force quit it'         : [Key('%s ' % LEADER), "fq"],
 }
 
 plugins = {
@@ -123,45 +125,78 @@ primitive_commands = {
     'globsore'    :  [":%s///g"] + [Key("left")]*3,
 
     'para' : [Key("escape"), "o", Key("enter")],
-
     }
 
+# Key("left"), Key("right") used to maintain column position when escaping immediately after `o` or `O`
+make_marker = lambda *args: [Key("left"), Key("right"), Key("escape"), Str("mt")]
 
-# "a", Key("backspace") used to maintain column position when escaping immediately after `o` or `O`
+text_selectors = {
+    "whale"      : "iw",
+    "ship whale" : "iW",
+    "each"       : "e",
+    "ship each"  : "E",
+    "doll"       : "$",
+    "sit larry"  : "i(",
+    "sit lack"   : "i[",
+    "sit lace"   : "i{",
+    "sit langle" : "i<",
+    "sit sote"   : "i'",
+    "sit quote"  : '''i"''',
+    "air lack"   : "a[",
+    "air lace"   : "a{",
+    "air langle" : "a<",
+    "air sote"   : "a'",
+    "air quote"  : '''a"''',
+    "fail"       : "f",
+    "til"        : "t",
+    "gif"        : "F",
+    "lit"        : "T",
+    }
+
+single_click_commands = [
+    'psych',
+    'steal',
+]
+
+movement_targets = lower_upper_digits.copy()
+movement_targets.update(punctuation)
+
+def SingleClickCommand(m):
+
+    utterance = []
+    for w in m._words:
+        utterance.append(w.word)
+
+    if utterance[0] == "psych":
+        preprend = 'y' # yank
+        append = "'tpa" # return to marker, paste, re-enter insert mode
+
+    if utterance[0] == "steal":
+        preprend = 'y' # yank
+        append = "'t" # return to marker
+
+    marker_operations = make_marker(m)
+    for action in marker_operations:
+        action(m)
+    time.sleep(0.001)
+    delayed_click(m)
+    del utterance[0] # remove teleport operator from utterance
+
+    movement_strokes = text_selectors.get(' '.join(utterance), False)
+    if not movement_strokes:
+        # movement key was also uttered. fish it out.
+        if movement_targets.get(' '.join(utterance[-2:]), False):
+            movement_strokes = text_selectors[' '.join(utterance[:-2])] + movement_targets[' '.join(utterance[-2:])]
+        else:
+            movement_strokes = text_selectors[' '.join(utterance[:-1])] + movement_targets[utterance[-1]]
+
+    movement_strokes = preprend + movement_strokes + append
+    Str(movement_strokes)(None)
+
 mouse_map = {
-    "psych whale"      : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiw'tpa"],
-    "psych ship whale" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiW'tpa"],
-    "psych each"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ye'tpa"],
-    "psych ship each"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yE'tpa"],
-    "psych doll"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "y$'tpa"],
-    "psych sit larry"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi('tpa"],
-    "psych sit lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi['tpa"],
-    "psych sit lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi{'tpa"],
-    "psych sit langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi<'tpa"],
-    "psych sit sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi''tpa"],
-    "psych sit quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """yi"'tpa"""],
-    "psych air lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya['tpa"],
-    "psych air lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya{'tpa"],
-    "psych air langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya<'tpa"],
-    "psych air sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya''tpa"],
-    "psych air quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """ya"'tpa"""],
-
-    "steal whale"      : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiw't"],
-    "steal ship whale" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yiW't"],
-    "steal each"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ye't"],
-    "steal ship each"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yE't"],
-    "steal doll"       : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "y$'t"],
-    "steal sit larry"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi('t"],
-    "steal sit lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi['t"],
-    "steal sit lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi{'t"],
-    "steal sit langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi<'t"],
-    "steal sit sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "yi''t"],
-    "steal sit quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """yi"'t"""],
-    "steal air lack"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya['t"],
-    "steal air lace"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya{'t"],
-    "steal air langle" : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya<'t"],
-    "steal air sote"   : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, "ya''t"],
-    "steal air quote"  : ["a", Key("backspace"), Key("escape"), "mt", delayed_click, """ya"'t"""],
+    '(%s) (%s) [(%s)]' % (' | '.join(single_click_commands),
+                          ' | '.join(list(text_selectors.keys())),
+                          ' | '.join(list(movement_targets.keys()))): SingleClickCommand,
 }
 
 common_names = {

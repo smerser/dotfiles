@@ -9,31 +9,19 @@ fi
 # autocorrects small mistakes
 shopt -s cdspell
 
-# mimics pushd and popd
-function cd() {
-  if [ "$#" = "0" ]
-  then
-  pushd ${HOME} > /dev/null
-  elif [ -f "${1}" ]
-  then
-    ${EDITOR} ${1}
-  else
-  pushd "$1" > /dev/null
-  fi
+function get_dirname() {
+    dirname_out=$(dirname "${1}");
 }
 
-function bd(){
-  if [ "$#" = "0" ]
-  then
-    popd > /dev/null
-  else
-    for i in $(seq ${1})
-    do
-      popd > /dev/null
-    done
-  fi
+function get_basename() {
+    basename_out=$(basename "${1}")
 }
 
+function split() {
+    # 1st argument: variable, e.g. a="split-me-please"
+    # 2nd argument: separator, e.g. -
+    split_out=(${1//${2}/ });
+}
 
 # convenience variables
 export CDPATH=.:~ # cd to directories other than cwd without rel path

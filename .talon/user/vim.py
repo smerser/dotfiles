@@ -117,7 +117,7 @@ primitive_commands = {
     'settings no paste'     : [":set", Key("space"), "nopaste", Key("enter")],
 
     # search stuff
-    'cancel hits' :  ["/asdf", Key("enter")],
+    'cancel hits' :  ["/asde", Key("enter")],
     'nex'         :  Key("n"),
     'bex'         :  Key("N"),
     'sore'        :  [":s///g"] + [Key("left")]*3,
@@ -148,6 +148,9 @@ text_selectors = {
     "air langle" : "a<",
     "air sote"   : "a'",
     "air quote"  : "a\"",
+}
+
+target_required_text_selectors = {
     "fail"       : "f",
     "til"        : "t",
     "gif"        : "F",
@@ -169,6 +172,7 @@ here_to_here_commands = [
     'bar',
     'kill',
     'steal',
+    'psych',
 ]
 
 movement_targets = lower_upper_digits.copy()
@@ -223,7 +227,7 @@ def TeleportCommand(m):
     marker_operations = make_marker(marker_key, m)
     for action in marker_operations:
         action(m)
-    time.sleep(0.001)
+    time.sleep(0.1)
     initial_pos_click(m)
     del utterance[0] # remove teleport operator from utterance
 
@@ -231,10 +235,9 @@ def TeleportCommand(m):
     if not movement_strokes:
         # movement key was also uttered. fish it out (assumes no more than 2 words, e.g. "ship air")
         if movement_targets.get(' '.join(utterance[-2:]), False):
-            movement_strokes = text_selectors[' '.join(utterance[:-2])] + movement_targets[' '.join(utterance[-2:])]
+            movement_strokes = target_required_text_selectors[' '.join(utterance[:-2])] + movement_targets[' '.join(utterance[-2:])]
         else:
-            movement_strokes = text_selectors[' '.join(utterance[:-1])] + movement_targets[utterance[-1]]
-
+            movement_strokes = target_required_text_selectors[' '.join(utterance[:-1])] + movement_targets[utterance[-1]]
     movement_strokes = preprend + movement_strokes + append
     Str(movement_strokes)(None)
 
@@ -255,23 +258,39 @@ def HereToHereCommand(m):
 
     if utterance[0] == 'phipps':
         selection_type = "v"
-        strokes = "'{}".format(marker3)
+        movements = "'{}".format(marker3)
+        strokes = ""
         append = ""
 
     elif utterance[0] == 'bar':
         selection_type = "V"
-        strokes = "'{}".format(marker3)
+        movements = "'{}".format(marker3)
+        strokes = ""
         append = ""
 
     elif utterance[0] == 'kill':
         selection_type = "V"
-        strokes = "'{}d".format(marker3)
+        movements = "'{}".format(marker3)
+        strokes = "d"
         append = "'{}".format(marker1)
 
     elif utterance[0] == 'steal':
         selection_type = "V"
-        strokes = "'{}y".format(marker3)
+        movements = "'{}".format(marker3)
+        strokes = "y"
         append = "'{}".format(marker1)
+
+    elif utterance[0] == 'psych':
+        selection_type = "V"
+        movements = "'{}".format(marker3)
+        strokes = "y"
+        append = "'{}p".format(marker1)
+
+    elif utterance[0] == 'psych':
+        selection_type = "V"
+        movements = "'{}".format(marker3)
+        strokes = "y"
+        append = "'{}p".format(marker1)
 
     else:
         raise Exception("`{}` is not a keyword understood by HereToHereCommand".format(utterance[0]))
@@ -281,49 +300,50 @@ def HereToHereCommand(m):
         marker_operations = make_marker(marker1, m)
         for action in marker_operations:
             action(m)
-        time.sleep(0.001)
+        time.sleep(0.05)
 
         final_pos_click(m)
         marker_operations = make_marker(marker3, m)
         for action in marker_operations:
             action(m)
-        time.sleep(0.001)
+        time.sleep(0.05)
 
         initial_pos_click(m)
-        Str(selection_type + strokes + append)(None)
+        Str(selection_type + movements + strokes + append)(None)
 
     # to-here command
     elif utterance[-2] == 'to':
         marker_operations = make_marker(marker1, m)
         for action in marker_operations:
             action(m)
-        time.sleep(0.001)
+        time.sleep(0.05)
 
         final_pos_click(m)
         marker_operations = make_marker(marker3, m)
         for action in marker_operations:
             action(m)
-        time.sleep(0.001)
+        time.sleep(0.05)
 
         return_to_cursor = "'{}".format(marker1)
-        Str(return_to_cursor + selection_type + strokes + append)(None)
+        Str(return_to_cursor + selection_type + movements + strokes + append)(None)
 
     # here command
     elif utterance[-1] == 'here':
         marker_operations = make_marker(marker1, m)
         for action in marker_operations:
             action(m)
-        time.sleep(0.001)
+        time.sleep(0.05)
 
         initial_pos_click(m)
-        Str(selection_type + append)(None)
+        Str(selection_type + strokes + append)(None)
 
 
 # everything mouse-related
 mouse_map = {
-    '(%s) (%s) [(%s)]' % (' | '.join(teleport_commands),
-                          ' | '.join(list(text_selectors.keys())),
-                          ' | '.join(list(movement_targets.keys()))): TeleportCommand,
+    '(%s) ((%s) | (%s) [(%s)])' % (' | '.join(teleport_commands),
+                                   ' | '.join(list(text_selectors.keys())),
+                                   ' | '.join(list(target_required_text_selectors.keys())),
+                                   ' | '.join(list(movement_targets.keys()))): TeleportCommand,
     '(%s) (here to here | to here | here)' % (' | '.join(here_to_here_commands)): HereToHereCommand,
 }; vimmap.update(mouse_map)
 

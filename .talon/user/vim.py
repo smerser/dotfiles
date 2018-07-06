@@ -1,5 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
-from .mouse import delayed_click
+from .mouse import initial_pos_click
 from .std import punctuation
 from .std import lower_upper_digits
 import time
@@ -10,24 +10,21 @@ vimmap = {}
 LEADER = 'space'
 
 # hacky ways for repeat commands that take numbers as variables (there is another one of these in std)
-# this doesn't work with buff 
-vimmap.update({'%d buff' % k: [Key('escape shift-right')]*k for k in range(1, 10)})
-vimmap.update({'%d ruff' % k: [Key('escape shift-left')]*k for k in range(1, 10)})
+vimmap.update({'%d buff' % k: [Key('escape shift-right'), lambda m: time.time(0.1)]*k for k in range(1, 10)})
+vimmap.update({'%d ruff' % k: [Key('escape shift-left'), lambda m: time.time(0.1)]*k for k in range(1, 10)})
 vimmap.update({'%d box' % k: ['x']*k for k in range(2, 10)})
 vimmap.update({'%d undo' % k: ['u']*k for k in range(2, 10)})
 vimmap.update({'%d redo' % k: [Key('ctrl-r')]*k for k in range(2, 10)})
 
-# share this with bash.py
+# share this with bash.py (I have vim-style bash -- see ~/.inputrc)
 common_to_bash = {
-    # within line search
     "gif"       : "F",
     "til"       : "t",
     "lit"       : "T",
     "bane"      : "ge",
     "ship bane" : "gE",
-
     "die line"  : "dd",
-}
+}; vimmap.update(common_to_bash)
 
 cursor_movement = {
     # line search
@@ -40,15 +37,14 @@ cursor_movement = {
     'slapper' : Key('escape shift-a enter'),
     'coder' : Key('escape shift-a : enter tab'),
     'slender' : Key('escape shift-a enter tab'),
-
-}
+}; vimmap.update(cursor_movement)
 
 viewport = {
     "more" : Key("shift-j"),
     "less" : Key("shift-k"),
     "lesser" : Key("shift-u"),
     "mortar" : Key("shift-d"),
-}
+}; vimmap.update(viewport)
 
 window_handler = {
     'buff'                  : Key('escape shift-right'),
@@ -64,7 +60,7 @@ window_handler = {
 
     'quit it'               : [Key('%s ' % LEADER), "q"],
     'force quit it'         : [Key('%s ' % LEADER), "fq"],
-}
+}; vimmap.update(window_handler)
 
 plugins = {
     # tagbar, nerdtree
@@ -85,6 +81,7 @@ plugins = {
 
 plugins.update({'%d jedi' % k: [Key('ctrl-j')]*k for k in range(2, 10)})
 plugins.update({'%d kitty' % k: [Key('ctrl-k')]*k for k in range(2, 10)})
+vimmap.update(plugins)
 
 primitive_commands = {
     'undo'                  :  [Key('escape'), "u"],
@@ -125,7 +122,7 @@ primitive_commands = {
     'globsore'    :  [":%s///g"] + [Key("left")]*3,
 
     'para' : [Key("escape"), "o", Key("enter")],
-    }
+}; vimmap.update(primitive_commands)
 
 # Key("left"), Key("right") used to maintain column position when escaping immediately after `o` or `O`
 make_marker = lambda *args: [Key("left"), Key("right"), Key("escape"), Str("mt")]
@@ -135,27 +132,33 @@ text_selectors = {
     "ship whale" : "iW",
     "each"       : "e",
     "ship each"  : "E",
+    "bat"        : "b",
+    "ship bat"   : "B",
     "doll"       : "$",
     "sit larry"  : "i(",
     "sit lack"   : "i[",
     "sit lace"   : "i{",
     "sit langle" : "i<",
     "sit sote"   : "i'",
-    "sit quote"  : '''i"''',
+    "sit quote"  : "i\"",
     "air lack"   : "a[",
     "air lace"   : "a{",
     "air langle" : "a<",
     "air sote"   : "a'",
-    "air quote"  : '''a"''',
+    "air quote"  : "a\"",
     "fail"       : "f",
     "til"        : "t",
     "gif"        : "F",
     "lit"        : "T",
-    }
+}
 
 single_click_commands = [
     'psych',
     'steal',
+    'slice',
+    'kill',
+    'kip',
+    'phipps',
 ]
 
 movement_targets = lower_upper_digits.copy()
@@ -171,15 +174,31 @@ def SingleClickCommand(m):
         preprend = 'y' # yank
         append = "'tpa" # return to marker, paste, re-enter insert mode
 
-    if utterance[0] == "steal":
+    elif utterance[0] == "steal":
         preprend = 'y' # yank
         append = "'t" # return to marker
+
+    elif utterance[0] == "slice":
+        preprend = 'd' # delete
+        append = "'tpa" # return to marker, paste, re-enter insert mode
+
+    elif utterance[0] == "kill":
+        preprend = 'd' # delete
+        append = "'t" # return to marker, paste, re-enter insert mode
+
+    elif utterance[0] == "kip":
+        preprend = 'c' # change
+        append = ""
+
+    elif utterance[0] == "phipps":
+        preprend = 'v' # select
+        append = ""
 
     marker_operations = make_marker(m)
     for action in marker_operations:
         action(m)
     time.sleep(0.001)
-    delayed_click(m)
+    initial_pos_click(m)
     del utterance[0] # remove teleport operator from utterance
 
     movement_strokes = text_selectors.get(' '.join(utterance), False)
@@ -197,21 +216,13 @@ mouse_map = {
     '(%s) (%s) [(%s)]' % (' | '.join(single_click_commands),
                           ' | '.join(list(text_selectors.keys())),
                           ' | '.join(list(movement_targets.keys()))): SingleClickCommand,
-}
+}; vimmap.update(mouse_map)
 
 common_names = {
     "dido" : "d$",
     "leader" : Key("%s" % LEADER),
-}
+}; vimmap.update(common_names)
 
-vimmap.update(primitive_commands)
-vimmap.update(cursor_movement)
-vimmap.update(window_handler)
-vimmap.update(plugins)
-vimmap.update(viewport)
-vimmap.update(common_names)
-vimmap.update(common_to_bash)
-vimmap.update(mouse_map)
 
 ctx.keymap(vimmap)
 

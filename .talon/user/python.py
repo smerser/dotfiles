@@ -23,13 +23,16 @@ basicpython  = {
     'return'       : 'return ',
     "from"         : "from ",
     "lint"         : " in ",
+    "not lint"     : " not in ",
     "andy"         : " and ",
+    "andy not"     : " and not ",
+    "ordy"         : " or ",
+    "ordy not"     : " or not ",
     "sass"         : " as ",
     "range"        : ["range()", Key("left")],
     "import"       : "import ",
     "sift"         : "if ",
     "sift not"     : "if not ",
-    "andy not"     : " and not ",
     "else"         : "else",
     "elif"         : "elif ",
     "try"          : ["try: ", Key("enter"), Key("tab")],
@@ -60,18 +63,14 @@ basicpython  = {
     "string"       : "str",
 
     "os"           : "os",
-}
+}; pythonmap.update(basicpython)
+
 
 pandasmap = {
-
     "loke" : ["loc[]", Key("left")],
     "iloke" : ["iloc[]", Key("left")],
-
-}
-
-
-pythonmap.update(basicpython)
-pythonmap.update(pandasmap)
+}; pythonmap.update(pandasmap)
 
 
 ctx.keymap(pythonmap)
+

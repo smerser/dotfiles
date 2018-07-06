@@ -55,6 +55,8 @@ vnoremap <c-y> '*y
 " ' is so much easier to type than ` for markers, that I switch them here
 nnoremap ' `
 nnoremap ` '
+vnoremap ' `
+vnoremap ` '
 
 " >> indents in command mode. >M idents to level defined by line above
 " command not written yet
@@ -192,7 +194,7 @@ set statusline+=%{fugitive#statusline()}
 inoremap <expr> <C-j>     pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>     pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" legacy comment, laggy plugin for relative + absolute numbering was called RltvNmbr
+" legacy comment: 'laggy plugin for relative + absolute numbering was called RltvNmbr'
 
 " hybrid line numbering
 :set number relativenumber
